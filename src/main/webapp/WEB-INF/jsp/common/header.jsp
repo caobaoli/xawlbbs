@@ -8,7 +8,7 @@
 	<meta name="description" content="${p.site_keywords.content}">
 	<meta name="apple-mobile-web-app-capable" content="no">
 	<meta content="True" name="HandheldFriendly">
-	<link rel="shortcut icon" href="${x}/img/favicon.png" type="image/png" />
+	<link rel="shortcut icon" href="${x}/img/favicon.ico"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${x}/css/bootstrap-flat.css">

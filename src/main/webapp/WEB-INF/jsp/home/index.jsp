@@ -59,7 +59,7 @@
 						</c:forEach>
 					</ul>
 					<div class="panel-footer ">
-						<%@ include file="/WEB-INF/jsp/common/pagination.jsp"%>
+						<%@ include file="/WEB-INF/jsp/common/pagination.jsp"%><!-- 公共部分用于分页 -->
 					</div>
 				</div>
 			</div>
@@ -73,12 +73,12 @@
 					</div>
 				</div>
 				<div class="panel panel-info">
-					<div class="panel-heading">AD</div>
+					<div class="panel-heading">校园文化</div>
 					${p.ad_side.content}
 				</div>
 	
 				<div class="panel panel-info">
-					<div class="panel-heading">热门节点</div>
+					<div class="panel-heading">热门分类</div>
 						<c:forEach items="${hotNodes}" var="node">
 							<a class="btn btn-info btn-xs btn-tag" href="${x}/nodes/${node.id}">${node.name}</a>
 						</c:forEach>
