@@ -1,25 +1,19 @@
 package xyz.springabc.service;
 
 import java.util.Date;
-import java.util.HashSet;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import xyz.springabc.domin.Collection;
 import xyz.springabc.domin.Comment;
-import xyz.springabc.domin.Focus;
 import xyz.springabc.domin.Node;
 import xyz.springabc.domin.Section;
 import xyz.springabc.domin.Topic;
 import xyz.springabc.domin.User;
-import xyz.springabc.error.ValidateError;
 import xyz.springabc.repository.CommentRepo;
 import xyz.springabc.repository.NodeRepo;
 import xyz.springabc.repository.SectionRepo;

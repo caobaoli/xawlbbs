@@ -16,10 +16,6 @@
 								class="btn btn-xs <c:if test="${'hot' eq sectionName }">btn-info</c:if>">热门</a>
 							<a href="${x}/!focused"
 								class="btn btn-xs <c:if test="${'focused' eq sectionName }">btn-info</c:if>">关注</a>
-							<c:forEach items="${sections}" var="section">
-								<a href="${x}/!${section.name}"
-									class="btn btn-xs <c:if test="${section.name eq sectionName }">btn-info</c:if>">${section.name}</a>
-							</c:forEach>
 						</div>
 					</div>
 
@@ -28,12 +24,7 @@
 
 							<li class="list-group-item">
 								<div class="media">
-									<div class="media-left">
-										<a href="${x}/users/${topic.user.id}/topics"> <img
-											class="media-object" src="${topic.user.avatar}" width="48px"
-											alt="${topic.user.nick}">
-										</a>
-									</div>
+									<div></div>
 									<div class="media-body">
 										<p>
 											<a href="${x}/nodes/${topic.node.id}"
@@ -44,11 +35,6 @@
 										<p class="meta">
 											<a href="${x}/users/${topic.user.id}/topics">
 												${topic.user.nick}</a> •<my:Flashback time="${topic.createAt}"></my:Flashback>
-											<c:if test="${not empty topic.lastCommentUser }"> •   
-										<a href="${x}/users/${topic.lastCommentUser.id}/topics">
-													${topic.lastCommentUser.nick}</a>
-										•<my:Flashback time="${topic.lastCommentAt}"/>
-										</c:if>
 										</p>
 									</div>
 									<div class="media-right media-middle">
@@ -72,9 +58,23 @@
 						</div>
 					</div>
 				</div>
+				
+				<div class="panel panel-info">
+					<div class="panel-heading">学校概况</div>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/">学校官网</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10002">学校简介</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10005">学校发展史</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10007">校园风光</a>
+				</div>
+				
 				<div class="panel panel-info">
 					<div class="panel-heading">校园文化</div>
-					${p.ad_side.content}
+					<a class="btn btn-info btn-xs btn-tag" href="http://tuanwei.xawl.edu.cn/">文理先锋网</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10026">文理学生会</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10027">文理社团</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10028">文理大礼堂</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://gonghui.xawl.edu.cn/">教工之家</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://xuanchuanbu.xawl.org/xuanchuanbu/baozhi/">文理校报</a>
 				</div>
 	
 				<div class="panel panel-info">
