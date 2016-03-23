@@ -29,7 +29,7 @@ import xyz.springabc.web.helper.MyMailSender;
 import xyz.springabc.web.helper.Validator;
 
 @Service
-public class UserServ {
+public class UserService {
 
 	public static final String ROLE_ADMIIN="admin";
 	
@@ -73,7 +73,6 @@ public class UserServ {
 		}
 		user.setNick(username);//默认的昵称就是用户名
 		user.setPassword(EncryptUtil.encryptUsernameAndPassword(username, password));
-		user.setAvatar("http://tp2.sinaimg.cn/3888714809/180/5727878850/1");
 		user.setNumber(userRepo.count());
 		user.setCreateAt(new Date());
 		return userRepo.save(user);

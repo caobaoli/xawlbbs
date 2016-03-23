@@ -7,7 +7,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import xyz.springabc.domin.User;
-import xyz.springabc.service.UserServ;
+import xyz.springabc.service.UserService;
 
 public class AdminInte implements HandlerInterceptor{
 
@@ -17,7 +17,7 @@ public class AdminInte implements HandlerInterceptor{
 		if(user==null){
 			return false;
 		}else{
-			if(!user.getRole().equals(UserServ.ROLE_ADMIIN)){
+			if(!user.getRole().equals(UserService.ROLE_ADMIIN)){
 				return false;
 			}else{
 				return true;

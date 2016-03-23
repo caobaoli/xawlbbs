@@ -25,14 +25,14 @@ import xyz.springabc.repository.TopicRepo;
 import xyz.springabc.service.NodeServ;
 import xyz.springabc.service.SectionServ;
 import xyz.springabc.service.TopicServ;
-import xyz.springabc.service.UserServ;
+import xyz.springabc.service.UserService;
 
 @Service
 @RequestMapping("/back/content/topics")
 public class ContentTopicC {
 	
 	@Autowired
-	private UserServ userServ;
+	private UserService userServ;
 	
 	@Autowired
 	private TopicServ topicServ;

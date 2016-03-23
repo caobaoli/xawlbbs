@@ -1,9 +1,5 @@
 package xyz.springabc.web.front;
 
-import java.io.IOException;
-import java.util.Random;
-
-import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +16,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import xyz.springabc.domin.User;
 import xyz.springabc.service.UploadFileServ;
-import xyz.springabc.service.UserServ;
+import xyz.springabc.service.UserService;
 import xyz.springabc.web.form.UserResetForm;
 
 @Controller
 @RequestMapping("/account")
-public class AccountC {
+public class AccountAction {
 	
 	@Autowired
-	private UserServ userServ;
+	private UserService userServ;
 	
 	@Autowired
 	private UploadFileServ uploadFileServ;
@@ -136,7 +132,7 @@ public class AccountC {
 			RedirectAttributes attributes,
 			HttpServletRequest request){
 		User userInDatabase=userServ.signin(user, errors);
-		if(errors.hasErrors()){
+		if(errors.getErrorCount()>0){
 			attributes.addFlashAttribute("error",errors.getAllErrors());
 			return "redirect:/account/signin";
 		}
@@ -149,80 +145,6 @@ public class AccountC {
 		}else{
 			return "redirect:/";
 		}
-	}
-	
-	/**
-	 * 发送找回密码邮件的页面
-	 * @return
-	 */
-	@RequestMapping(value="/forget",method=RequestMethod.GET)
-	public String forgetPage(){
-		return "/account/forget";
-	}
-	
-	
-	/**
-	 * 发送邮件
-	 * 产生的唯一校验码放在session
-	 * @param email
-	 * @param request
-	 * @return
-	 * @throws IOException
-	 * @throws MessagingException
-	 */
-	@RequestMapping("/sendEmail")
-	@ResponseBody
-	public boolean sendEmail(@RequestParam("email") String email,
-			HttpServletRequest request) throws IOException, MessagingException{
-		User user=userServ.getUserByNickOrEmailOrUsername(email);
-		if(user==null){
-			return false;
-		}else{
-			Random random=new Random();
-			String code=random.nextInt(99999)+"";
-			request.getSession().setAttribute("code", code);
-			return userServ.sendValidateEmail(email, code);
-		}
-	}
-	
-	/**
-	 * 检测校验码
-	 * @param code
-	 * @return
-	 */
-	@RequestMapping("/checkCode")
-	public boolean checkCode(@RequestParam("code") String code){
-		return true;
-	}
-	
-	/**
-	 * 通过校验码重置密码
-	 * @param username
-	 * @param attributes
-	 * @return
-	 */
-	@RequestMapping(value="/forget",method=RequestMethod.POST)
-	public String forgetAction(@Validated UserResetForm userResetForm,
-			Errors errors,
-			HttpServletRequest request,
-			RedirectAttributes attributes){
-		User user=userServ.getUserByNickOrEmailOrUsername(userResetForm.getEmail());
-		if(user==null){
-			errors.rejectValue("email", "email", "email");
-			attributes.addFlashAttribute("error",errors.getAllErrors());
-			return "redirect:/account/forget";
-		}
-		String code =(String) request.getSession().getAttribute("code");
-		userResetForm.setCode(code);
-		userResetForm.setPassword(user.getPassword());
-		userResetForm.setPassword2(userResetForm.getPassword1());
-		userServ.updatePassword(userResetForm, user, errors);
-		if(errors.hasErrors()){
-			attributes.addFlashAttribute("error",errors.getAllErrors());
-			return "redirect:/account/forget";
-		}
-		attributes.addFlashAttribute("msg","密码已重置");
-		return "redirect:/account/signin";
 	}
 	
 	/**
@@ -267,12 +189,6 @@ public class AccountC {
 		return "/account/setting";
 	}
 	
-	@RequestMapping("/activeEmail")
-	@ResponseBody
-	public String activeEmail(){
-		return "yes";
-	}
-	
 	/**
 	 * 激活
 	 * @param code
@@ -304,16 +220,6 @@ public class AccountC {
 			Model model){
 		User oldUser=(User)request.getSession().getAttribute("user");
 		String avatar="";
-		if(!file.isEmpty()){//判断有没有上传了头像
-			try {
-				avatar=uploadFileServ.upload(file).url;
-				avatar=oldUser.getAvatar();//没有上传新头像就用回原来的
-			} catch (Exception e1) {
-				model.addAttribute("error","头像上传失败");
-				return "/account/setting";
-			}
-		}
-		avatar=oldUser.getAvatar();//没有上传新头像就用回原来的
 		user.setAvatar(avatar);
 		User newUser = userServ.update(oldUser,user,errors);
 		if(errors.hasErrors()){

@@ -1,8 +1,5 @@
 package xyz.springabc.web.front;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,28 +7,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import xyz.springabc.domin.User;
-import xyz.springabc.repository.CollectionRepo;
 import xyz.springabc.service.CollectionServ;
 import xyz.springabc.service.CommentServ;
 import xyz.springabc.service.FollowServ;
 import xyz.springabc.service.NotificationServ;
 import xyz.springabc.service.TopicServ;
-import xyz.springabc.service.UserServ;
+import xyz.springabc.service.UserService;
 
 @Controller
 @RequestMapping("/users")
 public class UserC {
 	
 	@Autowired
-	private UserServ userServ;
+	private UserService userServ;
 	
 	@Autowired
 	private CollectionServ collectionServ;

@@ -17,7 +17,7 @@
 							<div class="form-group">
 								<label class="control-label col-md-2">用户名</label>
 								<div class="col-md-9">
-									<input class="form-control" type="text" id="username" placeholder="或者邮箱" name="username"/>
+									<input class="form-control" type="text" id="username" placeholder="Or Email" name="username"/>
 									<div class="help-block with-errors" style="display:none;">用户名或邮箱不存在</div>
 								</div>
 							</div>
@@ -28,14 +28,6 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<div class="col-md-9 checkbox col-md-offset-2">
-									<label>
-									<input type="checkbox" name="remind">记住我
-								</label>
-							</div>
-							</div>
-							<div class="form-group">
-								
 								<div class="col-md-9 col-md-offset-2">
 									<input type="submit" class="btn btn-info btn-block" value="登陆">
 								</div>
@@ -43,28 +35,25 @@
 						</div>
 						</form>
 					</div>
-					<div class="panel-footer">
-						忘记密码？<a href="${x}/account/forget"><span>找回</span></a>	
-					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
-<script type="text/javascript">
-$("#username").on("blur",function (e){
-	var username=$(this).val();
-	var usernameDIV=$(this);
-	$.getJSON("${x}/account/checkUsername?username="+username,function (msg){
-		if(msg!==true){
-		usernameDIV.parent().parent().addClass("has-error");
-		usernameDIV.parent().children(".with-errors").show();}
+	<script type="text/javascript">
+	$("#username").on("blur",function (e){
+		var username=$(this).val();
+		var usernameDIV=$(this);
+		$.getJSON("${x}/account/checkUsername?username="+username,function (msg){
+			if(msg!==true){
+			usernameDIV.parent().parent().addClass("has-error");
+			usernameDIV.parent().children(".with-errors").show();}
+		});
+	})
+	$("#username").on("focus",function (e){
+						$(this).parent().parent().removeClass("has-error");
+						$(this).parent().children(".with-errors").hide();
 	});
-})
-$("#username").on("focus",function (e){
-					$(this).parent().parent().removeClass("has-error");
-					$(this).parent().children(".with-errors").hide();
-});
-</script>
+	</script>
 </body>
 </html>

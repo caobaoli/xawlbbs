@@ -20,7 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import xyz.springabc.service.UserServ;
+import xyz.springabc.service.UserService;
 import xyz.springabc.web.helper.MyMailSender;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,7 +28,7 @@ import xyz.springabc.web.helper.MyMailSender;
 public class TestMail {
 	
 	@Autowired
-	private UserServ userServ;
+	private UserService userServ;
 	
 	String from = "spring-abc@outlook.com";
 	String to = "zh.h@outlook.com";

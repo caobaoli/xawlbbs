@@ -13,13 +13,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import xyz.springabc.domin.User;
 import xyz.springabc.error.ValidateError;
 import xyz.springabc.repository.UserRepo;
-import xyz.springabc.service.UserServ;
+import xyz.springabc.service.UserService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 public class TestUser {
 	
 	@Autowired
-	private UserServ userServ;
+	private UserService userServ;
 	@Autowired 
 	private UserRepo userRepo;
 	

@@ -17,7 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import xyz.springabc.domin.Comment;
 import xyz.springabc.domin.User;
 import xyz.springabc.service.CommentServ;
-import xyz.springabc.service.UserServ;
+import xyz.springabc.service.UserService;
 
 @Controller
 @RequestMapping("/comments")
@@ -64,7 +64,7 @@ public class CommentC {
 			HttpServletRequest request){
 		User user=(User)request.getSession().getAttribute("user");
 		Comment comment=commentServ.getOne(id);
-		if(comment.getUser().equals(user)||user.getRole().equals(UserServ.ROLE_ADMIIN)){
+		if(comment.getUser().equals(user)||user.getRole().equals(UserService.ROLE_ADMIIN)){
 			commentServ.delete(comment);
 			return true;
 		}else{

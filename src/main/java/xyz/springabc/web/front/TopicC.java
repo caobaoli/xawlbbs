@@ -27,7 +27,7 @@ import xyz.springabc.service.CommentServ;
 import xyz.springabc.service.NodeServ;
 import xyz.springabc.service.SectionServ;
 import xyz.springabc.service.TopicServ;
-import xyz.springabc.service.UserServ;
+import xyz.springabc.service.UserService;
 
 @Controller
 @RequestMapping("/topics")

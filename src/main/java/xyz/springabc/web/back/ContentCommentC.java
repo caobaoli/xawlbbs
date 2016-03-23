@@ -14,14 +14,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import xyz.springabc.domin.Comment;
 import xyz.springabc.service.CommentServ;
 import xyz.springabc.service.TopicServ;
-import xyz.springabc.service.UserServ;
+import xyz.springabc.service.UserService;
 
 @Controller
 @RequestMapping("/back/content/comments")
 public class ContentCommentC {
 
 	@Autowired
-	private UserServ userServ;
+	private UserService userServ;
 
 	@Autowired
 	private CommentServ commentServ;

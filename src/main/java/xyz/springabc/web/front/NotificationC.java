@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import xyz.springabc.domin.Notification;
 import xyz.springabc.domin.User;
 import xyz.springabc.service.NotificationServ;
-import xyz.springabc.service.UserServ;
+import xyz.springabc.service.UserService;
 
 @Controller
 @RequestMapping("/notifications")
@@ -23,7 +23,7 @@ public class NotificationC {
 	private NotificationServ notificationServ;
 	
 	@Autowired
-	private UserServ userServ;
+	private UserService userServ;
 	
 	/**
 	 * 显示未读通知

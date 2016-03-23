@@ -26,32 +26,13 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-2">头像</label>
-								<div class="col-md-9">
-									 <input style="padding: 6px" type="file" id="file" name="file" />
-									 <img alt="" id="file-preview" style="max-height: 320px;width: auto" src="${user.avatar}"> 
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-md-2">位置</label>
+								<label class="control-label col-md-2">所属年级</label>
 								<div class="col-md-9">
 									<input class="form-control" name="location" value="${user.location}"/>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-2">网站</label>
-								<div class="col-md-9">
-									<input class="form-control" name="homePage" value="${user.homePage}"/>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-md-2">代码库</label>
-								<div class="col-md-9">
-									<input class="form-control" name="github" value="${user.github}"/>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-md-2">社交网络</label>
+								<label class="control-label col-md-2">最爱的社交</label>
 								<div class="col-md-9">
 									<input class="form-control" name="twitter" value="${user.twitter}"/>
 								</div>
@@ -83,11 +64,6 @@
 				<div class="panel panel-info">
 					<div class="panel-body ">
 						<div class="media">
-							<div class="media-left text-center">
-								<a href="${x}/users/${user.id}/topics">
-									<img class="media-object" src="${user.avatar}" width="72px" alt="${user.nick}">
-								</a>
-							</div>
 							<div class="media-body">
 								<p>	
 									<a href="${x}/users/${user.id}/topics"><h4>${user.nick}</h4></a> 
@@ -124,22 +100,6 @@ $("#nick").on("focus",function (e){
 					$(this).parent().parent().removeClass("has-error");
 					$(this).parent().children(".with-errors").hide();
 });
-$("#file").on(
-		"change",
-		function(e) {
-			var fileControl = $(this);
-			var file = fileControl[0].files[0];//
-			fileControl.parent().removeClass("has-error");
-			if (file.size > 200000) {
-				console.log(file.size);
-				alert("文件过大>200KB");
-				fileControl.parent().parent().addClass("has-error");
-			} else {
-				console.log(file.size);
-				createURL(file,"file-preview");
-			}
-
-		});
 </script>
 </body>
 </html>

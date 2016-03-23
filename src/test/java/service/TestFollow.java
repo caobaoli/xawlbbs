@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import xyz.springabc.domin.User;
 import xyz.springabc.repository.UserRepo;
 import xyz.springabc.service.FollowServ;
-import xyz.springabc.service.UserServ;
+import xyz.springabc.service.UserService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 public class TestFollow {
