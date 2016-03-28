@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,11 +16,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import xyz.springabc.domin.Comment;
 import xyz.springabc.domin.User;
 import xyz.springabc.service.CommentServ;
-import xyz.springabc.service.UserService;
 
 @Controller
 @RequestMapping("/comments")
-public class CommentC {
+public class CommentAction {
 	
 	@Autowired
 	private CommentServ commentServ;
@@ -62,14 +60,9 @@ public class CommentC {
 	@ResponseBody
 	public boolean delete(@PathVariable("id") int id,
 			HttpServletRequest request){
-		User user=(User)request.getSession().getAttribute("user");
 		Comment comment=commentServ.getOne(id);
-		if(comment.getUser().equals(user)||user.getRole().equals(UserService.ROLE_ADMIIN)){
-			commentServ.delete(comment);
-			return true;
-		}else{
-			return false;
-		}
+		commentServ.delete(comment);
+		return true;
 	}
 	
 	@RequestMapping("/{id}/like")
