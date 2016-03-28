@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,9 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import xyz.springabc.domin.User;
-import xyz.springabc.error.ValidateError;
-import xyz.springabc.repository.UserRepo;
-import xyz.springabc.service.UploadFileServ;
 import xyz.springabc.service.UserService;
 
 @Controller
@@ -29,8 +25,6 @@ public class UserAndAdminC {
 	@Autowired
 	private UserService userServ;
 	
-	@Autowired
-	private UploadFileServ uploadFileServ;
 	
 	@RequestMapping("/admin")
 	public String admin(@RequestParam(value="p",defaultValue="1") int p,
@@ -75,16 +69,6 @@ public class UserAndAdminC {
 			Model model){
 		User oldUser=(User)request.getSession().getAttribute("user");
 		String avatar="";
-		if(!file.isEmpty()){//判断有没有上传了头像
-			try {
-				avatar=uploadFileServ.upload(file).url;
-				avatar=oldUser.getAvatar();//没有上传新头像就用回原来的
-			} catch (Exception e1) {
-				model.addAttribute("error","头像上传失败");
-				return "/BACK/users/edit";
-			}
-		}
-		avatar=oldUser.getAvatar();//没有上传新头像就用回原来的
 		user.setAvatar(avatar);
 		User newUser = userServ.update(oldUser,user,errors);
 		if(errors.hasErrors()){

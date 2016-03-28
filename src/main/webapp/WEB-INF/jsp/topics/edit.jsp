@@ -24,34 +24,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="modal fade" id="upload" tabindex="-1" role="dialog"
-			aria-labelledby="upload">
-			<div class="modal-dialog modal-md" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h4 class="modal-title">上传</h4>
-					</div>
-					<div class="modal-body" id="upload-body">
-						<form action="${x}/upload" class="dropzone" id="dropzone"></form>
-						<div class="media">
-							<div class="media-body">
-								<img alt="" src="" style="max-height: 640px; width: auto"
-									id="file-preview">
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-info" id="btn-upload">上传</button>
-						<button type="button" class="btn btn-info" id="btn-insert"
-							data-dismiss="modal">完成</button>
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="row">
 			<div class="col-md-9">
 				<ol class="breadcrumb">
@@ -98,16 +70,9 @@
 									<button type="button" id="btn-preview" class="btn btn-info"
 										style="border-right-width: 2px; border-right-color: #555;"
 										data-toggle="modal" data-target="#preview">预览</button>
-									<button type="button" id="btn-upload" class="btn btn-info"
-										data-toggle="modal" data-target="#upload">上传</button>
 								</div>
 								<textarea rows="30" class="form-control" name="content"
 									id="content" data-minlength="6" data-error="正文不少于六个字">${topic.content}</textarea>
-									<div class="help-block with-errors"></div>
-							</div>
-							<div class="form-group">
-								<label>标签</label> <input placeholder="为什么填不了？因为这个多标签功能还没有做，按节点分吧"
-									class="form-control" disabled="disabled">
 									<div class="help-block with-errors"></div>
 							</div>
 							<div class="btn-group">
@@ -118,12 +83,13 @@
 					</div>
 				</div>
 			</div>
+			<!-- 
 			<div class="col-md-3 sidebar">
 				<div class="panel panel-info">
 					<div class="panel-heading">须知</div>
-					${p.tip_topic.content}
 				</div>
 			</div>
+			 -->
 		</div>
 	</div>
 	<script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>

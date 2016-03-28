@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import xyz.springabc.domin.User;
-import xyz.springabc.service.UploadFileServ;
 import xyz.springabc.service.UserService;
 import xyz.springabc.web.form.UserResetForm;
 
@@ -25,9 +24,6 @@ public class AccountAction {
 	
 	@Autowired
 	private UserService userServ;
-	
-	@Autowired
-	private UploadFileServ uploadFileServ;
 	
 	/**
 	 * 登出动作

@@ -67,10 +67,8 @@
 						<c:forEach items="${comments}" var="comment">
 							<li id="floor${comment.floor}" class="list-group-item <c:if test="${comment.isLike}">list-group-item-info</c:if>">
 								<div class="media">
-									<div class="media-left">
-										<a href="${x}/users/${comment.user.id}/topics"> <img
-											class="media-object" src="${comment.user.avatar}"
-											width="48px" alt="${comment.user.nick}">
+									<div class="media-left" style="margin-top: 12px; padding-top:12px;">
+										<a href="${x}/users/${comment.user.id}/topics"> ${comment.user.nick}
 										</a>
 										<a  class="fa fa-thumbs-o-up btn" data-url="${x}/comments/${comment.id}/like">${comment.likeCount eq 0?'':comment.likeCount}</a>
 									</div>
@@ -127,31 +125,25 @@
 			<div class="col-md-3 sidebar">
 				<%@ include file="common/card.jsp" %>
 				<div class="panel panel-info">
-					<div class="panel-heading">AD</div>
-					${p.ad_inner.content}
+					<div class="panel-heading">学校概况</div>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/">学校官网</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10002">学校简介</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10005">学校发展史</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10007">校园风光</a>
 				</div>
+				
 				<div class="panel panel-info">
-			<div class="panel-heading">其他话题</div>
-				<ul class="list-group">
-					<c:forEach var="topic" items="${otherTopics}">
-						<li class="list-group-item">
-							<a href="${x}/topics/${topic.id}">
-								<c:choose>  
-                   					<c:when test="${fn:length(topic.title) > 12}">  
-                      					<c:out value="${fn:substring(topic.title, 0, 12)}" /> . . .  
-                   						</c:when>  
-                  					<c:otherwise>  
-                   						<c:out value="${topic.title}" />  
-                   					</c:otherwise>  
-              					</c:choose> 
-							</a>
-						</li>
-					</c:forEach>
-				</ul>
+					<div class="panel-heading">校园文化</div>
+					<a class="btn btn-info btn-xs btn-tag" href="http://tuanwei.xawl.edu.cn/">文理先锋网</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10026">文理学生会</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10027">文理社团</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10028">文理大礼堂</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://gonghui.xawl.edu.cn/">教工之家</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://xuanchuanbu.xawl.org/xuanchuanbu/baozhi/">文理校报</a>
+				</div>
 			</div>
 			</div>
 		</div>
-	</div>
 	<%@ include file="/WEB-INF/jsp/common/footer.jsp"%>
 	<script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
 	<script type="text/javascript">

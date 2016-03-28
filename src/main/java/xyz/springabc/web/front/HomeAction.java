@@ -19,7 +19,7 @@ import xyz.springabc.service.NodeServ;
 import xyz.springabc.service.TopicServ;
 
 @Controller
-public class HomeC {
+public class HomeAction {
 	
 	@Autowired
 	private TopicServ topicServ;
