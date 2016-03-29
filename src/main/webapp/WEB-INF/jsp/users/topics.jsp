@@ -16,8 +16,7 @@
 						<li class="active"><a href="${x}/users/${id}/topics">帖子</a></li>
 						<li class=""><a href="${x}/users/${id}/comments">回复</a></li>
 						<li class=""><a href="${x}/users/${id}/collections">收藏</a></li>
-						<li class=""><a href="${x}/users/${id}/following">追随着</a>
-						</li><li class=""><a href="${x}/users/${id}/followers">追随者</a></li></ul>
+					</ul>
 					<ul class="list-group-panel-body list-group list-group-users">
 						<c:forEach items="${page.content}" var="topic">
 						<li class="list-group-item ">
@@ -47,6 +46,5 @@
 	</div>
 </div>
 <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
-<%@ include file="common/script.jsp" %>
 </body>
 </html>

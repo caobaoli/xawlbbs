@@ -24,8 +24,7 @@
 							class="" title="发表新话题"><span
 								class="glyphicon glyphicon-pencil"></span></a></li>
 						<li class="notification-count"><a href="${x}/notifications"
-							class="" title="通知"><span class="glyphicon glyphicon-bell"></span>
-								<strong id="notification-count">0</strong></a></li>
+							class="" title="通知"><span class="glyphicon glyphicon-bell"></span></a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-expanded="false"> <span
 								class="glyphicon glyphicon-user" aria-hidden="true"></span>

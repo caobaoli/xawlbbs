@@ -13,7 +13,6 @@
 								<p>第${topic.user.number}号会员</p>
 								<p>加入于${topic.user.createAt}</p>
 								<hr style="margin: 0px">
-								<p>${topic.user.signature}</p>
 							</div>
 
 						</div>

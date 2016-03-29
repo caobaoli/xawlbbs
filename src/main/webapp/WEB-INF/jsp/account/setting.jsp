@@ -44,7 +44,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-2">个人资料</label>
+								<label class="control-label col-md-2">人生格言</label>
 								<div class="col-md-9">
 									<textarea rows="6" class="form-control" name="description">${user.description}</textarea>
 								</div>

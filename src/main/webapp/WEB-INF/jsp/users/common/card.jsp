@@ -10,7 +10,6 @@
 				<p>第${user.number}号会员</p>
 				<p>加入于${user.createAt}</p>
 				<hr style="margin: 0px">
-				<p>${user.signature}</p>
 			</div>
 		</div>
 	</div>
