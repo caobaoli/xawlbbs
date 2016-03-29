@@ -81,13 +81,11 @@ public class User implements java.io.Serializable {
 	@Pattern(regexp="^(?!_)(?!.*?_$)[A-Za-z0-9|_]{3,9}",message="用户名三到九个字母或者下滑线,下划线不能再开头或结尾")
 	private String username;
 	
-	private Set<Follow> followsForFollowerId = new HashSet<Follow>(0);
 	private Set<Notification> notifications = new HashSet<Notification>(0);
 	private Set<Topic> topics = new HashSet<Topic>(0);
 	private Set<Comment> comments = new HashSet<Comment>(0);
 	private Set<Focus> focuses = new HashSet<Focus>(0);
 	private Set<Collection> collections = new HashSet<Collection>(0);
-	private Set<Follow> followsForFollowingId = new HashSet<Follow>(0);
 	private Set<Comment> likeComments= new HashSet<Comment>();
 	public User() {
 	}
@@ -102,8 +100,8 @@ public class User implements java.io.Serializable {
 	public User(String avatar, Long commentCount, String company, Date createAt, String description, String email,
 			String github, String homePage, String location, String nick, long number, String password, long points,
 			String role, String signature, Long topicCount, String twitter, Date updateAt, String username,
-			Set<Follow> followsForFollowerId, Set<Notification> notifications, Set<Topic> topics, Set<Comment> comments,
-			Set<Focus> focuses, Set<Collection> collections, Set<Follow> followsForFollowingId,Set<Comment> likeComments) {
+		    Set<Notification> notifications, Set<Topic> topics, Set<Comment> comments,
+			Set<Focus> focuses, Set<Collection> collections,Set<Comment> likeComments) {
 		this.avatar = avatar;
 		this.commentCount = commentCount;
 		this.company = company;
@@ -123,14 +121,12 @@ public class User implements java.io.Serializable {
 		this.twitter = twitter;
 		this.updateAt = updateAt;
 		this.username = username;
-		this.followsForFollowerId = followsForFollowerId;
 		this.notifications = notifications;
 		this.topics = topics;
 		this.comments = comments;
 		this.focuses = focuses;
 		this.likeComments = likeComments;
 		this.collections = collections;
-		this.followsForFollowingId = followsForFollowingId;
 	}
 
 	@Id
@@ -318,14 +314,6 @@ public class User implements java.io.Serializable {
 		this.username = username;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "userByFollowerId")
-	public Set<Follow> getFollowsForFollowerId() {
-		return this.followsForFollowerId;
-	}
-
-	public void setFollowsForFollowerId(Set<Follow> followsForFollowerId) {
-		this.followsForFollowerId = followsForFollowerId;
-	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	public Set<Notification> getNotifications() {
@@ -372,15 +360,6 @@ public class User implements java.io.Serializable {
 		this.collections = collections;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "userByFollowingId")
-	public Set<Follow> getFollowsForFollowingId() {
-		return this.followsForFollowingId;
-	}
-
-	public void setFollowsForFollowingId(Set<Follow> followsForFollowingId) {
-		this.followsForFollowingId = followsForFollowingId;
-	}
-	
 	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "likeUsers")
 	public Set<Comment> getLikeComments() {
