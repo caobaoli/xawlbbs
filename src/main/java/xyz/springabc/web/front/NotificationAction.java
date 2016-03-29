@@ -17,7 +17,7 @@ import xyz.springabc.service.UserService;
 
 @Controller
 @RequestMapping("/notifications")
-public class NotificationC {
+public class NotificationAction {
 
 	@Autowired
 	private NotificationServ notificationServ;
