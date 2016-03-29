@@ -1,7 +1,6 @@
 package xyz.springabc.web.front;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,9 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
-import xyz.springabc.domin.Focus;
 import xyz.springabc.domin.Node;
 import xyz.springabc.domin.Topic;
 import xyz.springabc.domin.User;
@@ -25,7 +22,7 @@ import xyz.springabc.service.TopicServ;
 
 @Controller
 @RequestMapping("/nodes")
-public class NodeC {
+public class NodeAction {
 	
 	@Autowired
 	private NodeServ nodeServ;
@@ -80,22 +77,6 @@ public class NodeC {
 	@ResponseBody
 	public List<String> list(@PathVariable("sectionName") String sectionName){
 		return nodeServ.getNodeNameBySectionName(sectionName);
-	}
-	
-	@RequestMapping("/{id}/focus")
-	@ResponseBody
-	public boolean focus(@PathVariable("id") int nodeId,HttpServletRequest request){
-		User user=(User)request.getSession().getAttribute("user");
-		if(user==null){
-			return false;
-		}
-		boolean isFoucs=focuServ.isFocus(nodeId, user.getId());
-		if(isFoucs){
-			focuServ.unFocus(nodeId, user.getId());
-		}else{
-			focuServ.focus(nodeId, user.getId());
-		}
-		return !isFoucs;
 	}
 	
 }

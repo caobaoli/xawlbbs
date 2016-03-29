@@ -16,18 +16,6 @@
 						<div class="media">
 							<div class="media-body">
 								<a class="media-title-big" href="#">${node.name}</a>
-								<span class="pull-right">
-									<button class="btn btn-info btn-xs btn-focus" data-url="${x}/nodes/${node.id}/focus">
-									<c:choose>
-										<c:when test="${isFocus}">
-											取消关注
-										</c:when>
-										<c:otherwise>
-											关注
-										</c:otherwise>
-									</c:choose>
-									</button>
-								</span>
 								<hr style="margin: 0px">
 								<p>
 									 ${node.description}
@@ -93,25 +81,25 @@
 					</div>
 				</div>
 				<div class="panel panel-info">
-					<div class="panel-heading">AD</div>
-					${p.ad_side.content}
+					<div class="panel-heading">学校概况</div>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/">学校官网</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10002">学校简介</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10005">学校发展史</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10007">校园风光</a>
+				</div>
+				
+				<div class="panel panel-info">
+					<div class="panel-heading">校园文化</div>
+					<a class="btn btn-info btn-xs btn-tag" href="http://tuanwei.xawl.edu.cn/">文理先锋网</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10026">文理学生会</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10027">文理社团</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://www.xawl.org/info/iList.jsp?cat_id=10028">文理大礼堂</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://gonghui.xawl.edu.cn/">教工之家</a>
+					<a class="btn btn-info btn-xs btn-tag" href="http://xuanchuanbu.xawl.org/xuanchuanbu/baozhi/">文理校报</a>
 				</div>
 			</div>
 		</div>
 	</div>
 	<%@ include file="/WEB-INF/jsp/common/footer.jsp"%>
-	<script type="text/javascript">
-	$(".btn-focus").on("click",function (e){
-		var url=$(this).attr("data-url");
-		$.getJSON(url,function (msg){
-			console.log(msg);
-			if(msg==true){
-				$(".btn-focus").html("已关注");
-			}else{
-				$(".btn-focus").html("关注");
-			}
-		})
-	})
-	</script>
 </body>
 </html>
