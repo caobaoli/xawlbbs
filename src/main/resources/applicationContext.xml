@@ -110,38 +110,4 @@
 		proxy-target-class="true" />
 	<aop:aspectj-autoproxy />
 
-	<!-- 邮件发送器 -->
-	<bean id="myMailSender" class="xyz.springabc.web.helper.MyMailSender">
-		<constructor-arg index="0">
-			<value>${email.host}</value>
-		</constructor-arg>
-		<constructor-arg index="1">
-			<value>${email.port}</value>
-		</constructor-arg>
-		<constructor-arg index="2">
-			<value>${email.username}</value>
-		</constructor-arg>
-		<constructor-arg index="3">
-			<value>${email.password}</value>
-		</constructor-arg>
-	</bean>
-	<!-- qiniu -->
-	<bean id="uploadManager" class="com.qiniu.storage.UploadManager"></bean>
-	<bean id="qiniu" class="xyz.springabc.web.helper.Qiniu">
-		<constructor-arg index="0">
-			<value>${qiniu.accessKey}</value>
-		</constructor-arg>
-		<constructor-arg index="1">
-			<value>${qiniu.secretKey}</value>
-		</constructor-arg>
-		<constructor-arg index="2">
-			<value>${qiniu.space}</value>
-		</constructor-arg>
-		<constructor-arg index="3">
-			<value>${qiniu.domain}</value>
-		</constructor-arg>
-		<property name="uploadManager">
-			<ref bean="uploadManager" />
-		</property>
-	</bean>
 </beans>
