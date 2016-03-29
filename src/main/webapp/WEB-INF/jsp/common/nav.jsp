@@ -3,11 +3,12 @@
 <nav class="navbar  navbar-static-top navbar-default">
 	<div class="container">
 		<div class="navbar-header">
-			<a href="${x}/" class="navbar-brand">${p.site_name.content}</a>
+			<a href="${x}/" class="navbar-brand">文理论坛</a>
 		</div>
 		<span>
 			<ul class="nav navbar-nav">
-				${p.nav_main.content}
+				<li class=""><a href="${x}/">话题</a></li>
+				<li class=""><a href="${x}/nodes">节点</a></li>
 			</ul>
 			<c:choose>
 				<c:when test="${empty sessionScope.user}">
