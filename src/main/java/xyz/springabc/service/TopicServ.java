@@ -65,7 +65,7 @@ public class TopicServ {
 	 * @return
 	 */
 	public Page<Topic> getAllFilteByStatusOrderByDefault(int page) {
-		PageRequest pageRequest = new PageRequest(--page, 30);
+		PageRequest pageRequest = new PageRequest(--page, 6);
 		Page<Topic> topicPage = topicRepo.findByStatusOrderByLastCommentAtDesc(0, pageRequest);
 		this.setLastCommentUser(topicPage);
 		return topicPage;
@@ -78,7 +78,7 @@ public class TopicServ {
 	 * @return
 	 */
 	public Page<Topic> getAllOrderByHot(int page) {
-		PageRequest pageRequest = new PageRequest(--page, 30);
+		PageRequest pageRequest = new PageRequest(--page, 6);
 		Page<Topic> topicPage = topicRepo.findAllByStatusOrderByCommentCountDesc(0, pageRequest);
 		this.setLastCommentUser(topicPage);
 		return topicPage;
@@ -93,7 +93,7 @@ public class TopicServ {
 	 * @return
 	 */
 	public Page<Topic> getBySectionDefault(String sectionName, int page) {
-		PageRequest pageRequest = new PageRequest(--page, 30);
+		PageRequest pageRequest = new PageRequest(--page, 6);
 		Page<Topic> topicPage = topicRepo.findByNodeSectionAndStatusOrderByLastCommentAtDesc(sectionName, 0,
 				pageRequest);
 		this.setLastCommentUser(topicPage);
@@ -111,7 +111,7 @@ public class TopicServ {
 		Section section = new Section();
 		section.setId(new Integer(sectionId));
 		int status = 0;
-		PageRequest pageRequest = new PageRequest(--page, 30);
+		PageRequest pageRequest = new PageRequest(--page, 6);
 		Page<Topic> topicPage = topicRepo.findByNodeSectionAndStatusOrderByLastCommentAtDesc(section, status,
 				pageRequest);
 		this.setLastCommentUser(topicPage);
@@ -164,21 +164,21 @@ public class TopicServ {
 	 * @return
 	 */
 	public Page<Topic> getByNodeOrderByDefault(String nodeName, int page) {
-		PageRequest pageRequest = new PageRequest(--page, 30);
+		PageRequest pageRequest = new PageRequest(--page, 6);
 		Page<Topic> topicPage = topicRepo.findByNodeAndStatusOrderByLastCommentAtDesc(nodeName, 0, pageRequest);
 		this.setLastCommentUser(topicPage);
 		return topicPage;
 	}
 
 	public Page<Topic> getByNodeOrderByDefault(Node node, int page) {
-		PageRequest pageRequest = new PageRequest(--page, 30);
+		PageRequest pageRequest = new PageRequest(--page, 6);
 		Page<Topic> topicPage = topicRepo.findByNodeAndStatusOrderByLastCommentAtDesc(node, 0, pageRequest);
 		this.setLastCommentUser(topicPage);
 		return topicPage;
 	}
 	
 	public Page<Topic> getByFocusedOrderByDefault(int userId,int page){
-		PageRequest pageRequest = new PageRequest(--page, 30);
+		PageRequest pageRequest = new PageRequest(--page, 6);
 		Page<Topic> topicPage = topicRepo.findByFocusedOrderByDefault(userId, pageRequest);
 		this.setLastCommentUser(topicPage);
 		return topicPage;

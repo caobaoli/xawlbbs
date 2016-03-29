@@ -5,7 +5,7 @@
 		<div class="media">
 			<div class="media-body">
 				<p>
-					<a href="${x}/users/${user.id}/topics"><h4>${user.nick}</h4>(${user.role})</a>
+					<a href="${x}/users/${user.id}/topics"><h4>${user.nick}</h4>${user.role}</a>
 				</p>
 				<p>第${user.number}号会员</p>
 				<p>加入于${user.createAt}</p>

@@ -1,9 +1,5 @@
 package xyz.springabc.repository;
 
-import java.util.List;
-
-import javax.transaction.Transactional;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -107,7 +103,7 @@ public interface TopicRepo extends JpaRepository<Topic, Integer>{
 	Page<Topic> findByNodeAndStatusOrderByCommentCountAsc(Node node,int status,Pageable pageRequest);
 	
 	/**
-	 * 评论数加一
+	 * 浏览数加一
 	 */
 	@Modifying
 	@Query(value="update topic set topic.view_count = topic.view_count + 1 where topic.id = ?1 ",
@@ -125,7 +121,7 @@ public interface TopicRepo extends JpaRepository<Topic, Integer>{
 	int plusLikeCountById(int id);
 	
 	/**
-	 * 点赞数加一
+	 * 评论数加一
 	 * @param id
 	 * @return
 	 */
