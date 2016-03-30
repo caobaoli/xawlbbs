@@ -2,10 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>${p.site_name.content}</title>
+	<title>文理论坛</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="keywords" content="${p.site_description.content}">
-	<meta name="description" content="${p.site_keywords.content}">
 	<meta name="apple-mobile-web-app-capable" content="no">
 	<meta content="True" name="HandheldFriendly">
 	<link rel="shortcut icon" href="${x}/img/favicon.ico"/>

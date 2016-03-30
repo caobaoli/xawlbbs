@@ -145,7 +145,7 @@
 			</div>
 		</div>
 	<%@ include file="/WEB-INF/jsp/common/footer.jsp"%>
-	<script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
+	<script src="${x}/js/marked.min.js"></script>
 	<script type="text/javascript">
 	$(function (){
 		var originHTML=marked($("#topic-content").text());

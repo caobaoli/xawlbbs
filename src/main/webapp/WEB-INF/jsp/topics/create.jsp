@@ -90,9 +90,21 @@
 			 -->
 		</div>
 	</div>
-	<script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
-	<script src="//cdn.bootcss.com/dropzone/4.2.0/min/dropzone.min.js"></script>
+	<script src="${x}/js/marked.min.js"></script>
+	<script src="${x}/js/dropzone.js"></script>
 	<script type="text/javascript">
+		$(document).ready(function(){
+			var sectionName = $("#section").val();
+			var url = "${x}/nodes/list/"+ sectionName;
+			$.getJSON(url,function (nodeNames){
+				var nodeNamesStr="";
+				for(var i=0;i<nodeNames.length;i++){
+					nodeNamesStr+="<option>"+nodeNames[i]+"</option>";
+				}
+				console.log(nodeNamesStr);
+				$("#topicNodeName").html(nodeNamesStr);
+			});
+		});
 		$("#section").on("change",function(e) {
 							var sectionName = $("#section").val();
 							var url = "${x}/nodes/list/"+ sectionName;
@@ -112,39 +124,6 @@
 			var content_marked = marked(content);
 			$("#preview-body").html(content_marked);
 		});
-		
-		Dropzone.options.dropzone = {
-				  autoProcessQueue: false,
-				  init: function() {
-				    var submitButton = document.querySelector("#btn-upload")
-				        dropzone = this; // closure
-
-				    submitButton.addEventListener("click", function() {
-				    	dropzone.processQueue(); // Tell Dropzone to process all queued file.
-				    });
-				    this.on("success", function(file, response) {
-				    	var url=response.url;
-				    	var name=response.key;
-				    	var btnInsert="<button class=\"btn btn-info btn-sm btn-insert col-md-6 col-md-offset-3\""
-				    	+" id=\""+url+"\""
-				    	+" type=\"button\">插入</button>";
-				    	var divInsert=document.createElement("div");
-				    	divInsert.setAttribute("class", "row");
-				    	divInsert.setAttribute("style","margin-top:1em");
-				    	divInsert.innerHTML=btnInsert;
-				    	file.previewTemplate.appendChild(divInsert);
-				    	document.getElementById(url).onclick=function(e){//给这个按钮添加方法
-				    		url=e.srcElement.id;
-				    		var textareaContent=document.getElementById("content");
-				    		var mdImg="!["+name+"]("+url+")";//md的图片元素
-				    		inserStr(textareaContent,mdImg);//光标位置插入
-				    	}
-				    });
-				    this.on("addedfile", function() {
-				    	console.log("add!");
-				    });
-				  }
-				};
 	</script>
 	<%@ include file="/WEB-INF/jsp/common/footer.jsp"%>
 </body>

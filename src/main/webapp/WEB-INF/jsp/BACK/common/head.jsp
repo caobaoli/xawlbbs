@@ -5,15 +5,14 @@
 	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %><c:set
 	value="<%=request.getContextPath() %>" var="x"></c:set>
 	<c:set value="${x}/back" var="back"></c:set>
-	<c:set value="${applicationScope}" var="p"></c:set>
 <!DOCTYPE html>
 <html>
 <head>
-<title>${p.site_name.content}</title>
+<title>文理论坛-后台管理</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="apple-mobile-web-app-capable" content="no">
 <meta content="True" name="HandheldFriendly">
-<link rel="shortcut icon" href="${x}/img/favicon.png" type="image/png" />
+<link rel="shortcut icon" href="${x}/img/favicon.ico" type="image/png" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" type="text/css" href="${x}/css/bootstrap.min.css">
