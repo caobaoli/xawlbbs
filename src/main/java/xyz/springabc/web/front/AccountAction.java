@@ -128,17 +128,12 @@ public class AccountAction {
 			RedirectAttributes attributes,
 			HttpServletRequest request){
 		User userInDatabase=userServ.signin(user, errors);
-		if(errors.getErrorCount()>0){
-			attributes.addFlashAttribute("error",errors.getAllErrors());
+		if(userInDatabase == null) {
+			attributes.addFlashAttribute("myerror", "用户名密码错误！");
 			return "redirect:/account/signin";
-		}
-		request.getSession().setAttribute("user", userInDatabase);
-		attributes.addFlashAttribute("msg","您已经登录");
-		String fromUrl="";
-		if(request.getSession().getAttribute("fromUrl")!=null){
-			fromUrl=(String)request.getSession().getAttribute("fromUrl");
-			return "redirect:"+fromUrl;//重定向到来源页面
-		}else{
+		} else {
+			request.getSession().setAttribute("user", userInDatabase);
+			attributes.addFlashAttribute("msg","您已经登录");
 			return "redirect:/";
 		}
 	}

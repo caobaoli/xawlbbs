@@ -5,13 +5,10 @@ import java.util.regex.Pattern;
 public class Validator {
 	
 	public static boolean isEmail(String email){
-		 String check = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";  
+		 String check = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";  
 		 Pattern regex = Pattern.compile(check);  
 		 java.util.regex.Matcher matcher = regex.matcher(email);
 		 return matcher.matches();
 	}
 	
-	public static void main(String[] args){
-		System.out.println(isEmail("zh.houtlook.com"));
-	}
 }

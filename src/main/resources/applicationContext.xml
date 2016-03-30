@@ -13,7 +13,7 @@
 		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd"
 	default-lazy-init="true">
 
-	<description>Spring-abc</description>
+	<description>xawlbbs</description>
 
 	<context:component-scan base-package="xyz.springabc">
 		<context:exclude-filter type="annotation"

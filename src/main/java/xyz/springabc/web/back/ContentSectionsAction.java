@@ -48,7 +48,6 @@ public class ContentSectionsAction {
 			attribute.addFlashAttribute("msg","已删除");
 		} catch(Exception e) {
 			attribute.addFlashAttribute("myerror", "无法完成删除，请先删除类别所包含的话题，再重试！");
-			System.out.println("sss");
 		}
 		String redirectUrl=request.getHeader("Referer");
 		return "redirect:"+redirectUrl;

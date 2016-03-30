@@ -17,14 +17,14 @@
 							<div class="form-group">
 								<label class="control-label col-md-2">用户名</label>
 								<div class="col-md-9">
-									<input class="form-control" type="text" id="username" placeholder="Or Email" name="username"/>
+									<input class="form-control" type="text" id="username" placeholder="Or Email" name="username" required="required"/>
 									<div class="help-block with-errors" style="display:none;">用户名或邮箱不存在</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-md-2">密码</label>
 								<div class="col-md-9">
-									<input class="form-control" type="password" name="password"/>
+									<input class="form-control" type="password" name="password" required="required"/>
 								</div>
 							</div>
 							<div class="form-group">
