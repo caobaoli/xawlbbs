@@ -47,18 +47,7 @@
 	<div class="navbar-default sidebar" role="navigation">
 		<div class="sidebar-nav navbar-collapse">
 			<ul class="nav" id="side-menu">
-				<li><a href="#"><i class="fa  fa-gear"></i> 站点设置<span
-						class="fa arrow"></span> </a>
-					<ul class="nav nav-second-level">
-						<li><a href="${back}/app/infomation">站点信息</a></li>
-						<li><a href="${back}/app/nav">导航安排</a></li>
-						<li><a href="${back}/app/footer">底部元素</a></li>
-						<li><a href="${back}/app/ad">广告栏目</a></li>
-						<li><a href="${back}/app/tips">提示信息</a></li>
-						<li><a href="${back}/app/authority">权限设置</a></li>
-					</ul> <!-- /.nav-second-level --></li>
-
-				<li><a href="#"><i class="fa fa-book"></i> 社区内容<span
+				<li><a href="#"><i class="fa fa-book"></i> 论坛管理<span
 						class="fa arrow"></span> </a>
 					<ul class="nav nav-second-level">
 						<li><a href="${back}/content/topics">话题</a></li>
