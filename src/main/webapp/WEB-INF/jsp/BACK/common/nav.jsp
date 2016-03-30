@@ -9,7 +9,7 @@
 			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
 			<span class="icon-bar"></span> <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="${x}/back/">${p.site_name.content}</a>
+		<a class="navbar-brand" href="${x}/back/">文理论坛</a>
 	</div>
 	<!-- /.navbar-header -->
 
@@ -34,14 +34,6 @@
 					href="${x}/users/${sessionScope.user.id}/collections"> <span
 						class="glyphicon glyphicon-bookmark"></span> 收藏话题
 				</a></li>
-				<li class=""><a
-					href="${x}/users/${sessionScope.user.id}/following"> <span
-						class="glyphicon glyphicon-asterisk"></span> 我所关注
-				</a></li>
-				<li class=""><div class="divider"></div></li>
-				<li class=""><a href="${x}/back/"> <span
-						class="glyphicon glyphicon-cloud"></span> 后台管理
-				</a></li>
 				<li class=""><div class="divider"></div></li>
 				<li class=""><a rel="nofollow" data-method="delete"
 					href="${x}/account/signout"> <span
@@ -55,12 +47,6 @@
 	<div class="navbar-default sidebar" role="navigation">
 		<div class="sidebar-nav navbar-collapse">
 			<ul class="nav" id="side-menu">
-				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
-						运行状态<span class="fa arrow"></span> </a>
-					<ul class="nav nav-second-level">
-						<li><a href="${back}/status/overview">统计信息</a></li>
-						<li><a href="${back}/status/log">日志报告</a></li>
-					</ul> <!-- /.nav-second-level --></li>
 				<li><a href="#"><i class="fa  fa-gear"></i> 站点设置<span
 						class="fa arrow"></span> </a>
 					<ul class="nav nav-second-level">

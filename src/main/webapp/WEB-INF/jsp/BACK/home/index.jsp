@@ -9,21 +9,11 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div style="text-align: center;margin-top: 20%;margin-bottom: 20%">
-<h1>Wellcome !</h1>
+<h1>Welcome !</h1>
    </div> 
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
-
-			<!-- /.row -->
-
-			<!-- /.row -->
-
-			<!-- /.row -->
-
-			<!-- /.row -->
-
-			<!-- /.row -->
 		</div>
 		<!-- /#page-wrapper -->
 
