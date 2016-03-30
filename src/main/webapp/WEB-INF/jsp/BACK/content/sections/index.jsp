@@ -11,20 +11,21 @@
 					<div class="modal-content">
 						<div class="modal-body">
 							<div class="modal-header">
-								确定要删除？
-								(有级联很多，先不删除了，改吧)
+								亲，确定要删除？
+								(要删除请将先将所包含的话题删除，否则不能删除！！！)
 							</div>
 						</div>
 						<div class="modal-body">
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">取消</button>
-							<button type="button" class="btn btn-danger">删除</button>
+							<button type="button" class="btn btn-danger btn-sure">删除</button>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12" style="margin-top: 30px">
+				<%@ include file="../../common/msg.jsp" %>
 					<div class="panel panel-info">
 						<div class="panel-heading">节点</div>
 
@@ -40,10 +41,8 @@
 												<tr>
 												<th width="5%">#</th>
 													<th width="15%">名字</th>
-													<th width="45%">描述</th>
-													<th width="10%">状态</th>
+													<th width="50%">描述</th>
 													<th width="10%">话题数</th>
-													<th width="5%">状态</th>
 													<th width="10%">处理</th>
 												</tr>
 											</thead>
@@ -62,13 +61,11 @@
                    										</c:otherwise>  
               										</c:choose> 
 													</td>
-													<td>${node.status}</td>
 													<td>${node.topicCount}</td>
-													<td>${node.section.id}</td>
 													<td>
 														<a class="btn btn-info btn-xs" href="${x}/back/content/sections/${node.id}/edit" >编辑</a>
-														<button class="btn btn-danger btn-xs" data-toggle="modal"
-															data-target="#delete">删除</button>
+														<button class="btn btn-danger btn-xs btn-delete"
+															 data-url="${x}/back/content/sections/${node.id}/delete">删除</button>
 													</td>
 												</tr>
 											</c:forEach>
@@ -95,6 +92,14 @@
 	<script src="${x}/js/metisMenu.min.js"></script>
 
 	<script src="${x}/js/sb-admin-2.js"></script>
-
+	<script type="text/javascript">
+		$(".btn-delete").on("click",function (e){
+			var url=$(this).attr("data-url");
+			$("#delete").modal('show');
+			$(".btn-sure").on("click",function (e){
+				location.href=url;
+			})
+		})
+	</script>
 </body>
 </html>

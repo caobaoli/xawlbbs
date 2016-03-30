@@ -281,7 +281,7 @@ public class TopicServ {
 	}
 
 	public Page<Topic> getByLike(String nick, String title, int page) {
-		PageRequest pageRequest = new PageRequest(--page, 30);
+		PageRequest pageRequest = new PageRequest(--page, 6);
 		if (title != "") {
 			return topicRepo.findByTitleLikeAndStatus(title, 0, pageRequest);
 		} else {

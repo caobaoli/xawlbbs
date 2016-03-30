@@ -11,10 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.sun.org.apache.xpath.internal.operations.Mod;
 
 import xyz.springabc.domin.Node;
 import xyz.springabc.domin.Section;
@@ -23,7 +20,7 @@ import xyz.springabc.service.SectionServ;
 
 @Controller
 @RequestMapping("/back/content/sections")
-public class ContentSectionsC {
+public class ContentSectionsAction {
 	
 	@Autowired
 	private SectionServ sectionServ;
@@ -44,8 +41,15 @@ public class ContentSectionsC {
 	
 	@RequestMapping("/{id}/delete")
 	public String delete(@PathVariable("id") int id,
-			HttpServletRequest request){
-		nodeServ.deleteById(id);
+			HttpServletRequest request,
+			RedirectAttributes attribute){
+		try {
+			nodeServ.deleteById(id);
+			attribute.addFlashAttribute("msg","已删除");
+		} catch(Exception e) {
+			attribute.addFlashAttribute("myerror", "无法完成删除，请先删除类别所包含的话题，再重试！");
+			System.out.println("sss");
+		}
 		String redirectUrl=request.getHeader("Referer");
 		return "redirect:"+redirectUrl;
 	}
