@@ -46,7 +46,7 @@
 									href="${x}/users/${sessionScope.user.id}/collections"> <span
 										class="glyphicon glyphicon-bookmark"></span> 收藏话题
 								</a></li>
-								<c:if test="${sessionScope.user.role eq p.comment_edit.content}">
+								<c:if test="${sessionScope.user.role eq 'admin'}">
 									<li class=""><div class="divider"></div></li>
 									<li class=""><a href="${x}/back/"> <span
 											class="glyphicon glyphicon-cloud"></span> 后台管理
