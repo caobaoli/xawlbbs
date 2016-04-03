@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `node` (
 DELETE FROM `node`;
 /*!40000 ALTER TABLE `node` DISABLE KEYS */;
 INSERT INTO `node` (`id`, `avatar`, `description`, `topic_count`, `name`, `status`, `section_id`) VALUES
-	(8, NULL, '就是用来测试的', 6, 'test', 0, 2);
+	(1, NULL, '每天每时每刻记下你的亲身感触', 0, '感触', 0, 1);
 /*!40000 ALTER TABLE `node` ENABLE KEYS */;
 
 
@@ -182,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `section` (
 DELETE FROM `section`;
 /*!40000 ALTER TABLE `section` DISABLE KEYS */;
 INSERT INTO `section` (`id`, `name`, `sort`) VALUES
-	(2, 'test', 0);
+	(1, 'test', 0);
 /*!40000 ALTER TABLE `section` ENABLE KEYS */;
 
 

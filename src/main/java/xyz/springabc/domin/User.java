@@ -57,7 +57,7 @@ public class User implements java.io.Serializable {
 	@Size(max=60,message="位置不能超过六十个字符")
 	private String location;
 	
-	@Pattern(regexp="^(?!_)(?!.*?_$)[\u4e00-\u9fa5|A-Za-z0-9|_]{3,9}",message="昵称三到九个字母或者下滑线,下划线不能再开头或结尾")
+	@Pattern(regexp="^(?!_)(?!.*?_$)[\u4e00-\u9fa5|A-Za-z0-9|_]{3,18}",message="昵称三到十八个字母或者下滑线,下划线不能再开头或结尾")
 	private String nick;
 	
 	private long number;
@@ -78,7 +78,7 @@ public class User implements java.io.Serializable {
 	
 	private Date updateAt;
 	
-	@Pattern(regexp="^(?!_)(?!.*?_$)[A-Za-z0-9|_]{3,9}",message="用户名三到九个字母或者下滑线,下划线不能再开头或结尾")
+	@Pattern(regexp="^(?!_)(?!.*?_$)[A-Za-z0-9|_]{3,18}",message="用户名三到十八个个字母或者下滑线,下划线不能再开头或结尾")
 	private String username;
 	
 	private Set<Notification> notifications = new HashSet<Notification>(0);

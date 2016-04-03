@@ -61,6 +61,7 @@ public class AccountAction {
 			User signinUser=userServ.signup(user, password1,erros);
 			
 			if(erros.hasErrors()){
+				attributese.addFlashAttribute("myerror", "用户名三到十八个个字母或者下滑线,下划线不能再开头或结尾。请重试！");
 				attributese.addFlashAttribute("user",user);
 				attributese.addFlashAttribute("error",erros.getAllErrors());
 				return "redirect:/account/signup";

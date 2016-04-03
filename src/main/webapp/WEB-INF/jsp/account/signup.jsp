@@ -17,7 +17,7 @@
 									<label class="control-label col-md-2">Email</label>
 									<div class="col-md-9">
 										<input class="form-control" data-error="请输入正确的邮箱"
-											placeholder="正常使用的邮箱" type="email" id="email" name="email" value="${user.email}" />
+											placeholder="正常使用的邮箱" type="email" id="email" name="email" value="${user.email}" required="required"/>
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
@@ -27,7 +27,7 @@
 									<div class="col-md-9">
 										<input class="form-control" id="username" data-error="数字或字母，6到18位"
 											pattern="^[_A-z0-9]{6,18}$" placeholder="数字或字母" type="text"
-											value="${user.username}" name="username" />
+											value="${user.username}" name="username" required="required"/>
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
@@ -35,7 +35,7 @@
 									<label class="control-label col-md-2">密码</label>
 									<div class="col-md-9">
 										<input class="form-control" data-minlength="6" type="password"
-											name="password" id="password" placeholder="至少6位" data-error="密码长6位到18位" />
+											name="password" id="password" placeholder="至少6位" data-error="密码长6位到18位" required="required"/>
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
@@ -43,7 +43,7 @@
 									<label class="control-label col-md-2">确认密码</label>
 									<div class="col-md-9">
 										<input class="form-control" data-match="#password"
-											data-match-error="密码不匹配" placeholder="再次输入密码" type="password" name="password1" />
+											data-match-error="密码不匹配" placeholder="再次输入密码" type="password" name="password1" required="required"/>
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
