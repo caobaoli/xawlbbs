@@ -18,7 +18,7 @@ import xyz.springabc.service.UserService;
 
 @Controller
 @RequestMapping("/back/content/comments")
-public class ContentCommentC {
+public class ContentCommentAction {
 
 	@Autowired
 	private UserService userServ;
@@ -54,6 +54,7 @@ public class ContentCommentC {
 
 	@RequestMapping("/{id}/delete")
 	public String edit(@PathVariable(value = "id") int id, HttpServletRequest request, RedirectAttributes attributes) {
+		commentServ.delete(id);
 		String redirectUrl = request.getHeader("Referer");
 		attributes.addFlashAttribute("msg", "已经删除");
 		return "redirect:" + redirectUrl;

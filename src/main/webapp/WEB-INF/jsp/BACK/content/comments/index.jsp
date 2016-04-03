@@ -6,20 +6,16 @@
 	<div id="wrapper">
 		<%@ include file="../../common/nav.jsp"%>
 		<div id="page-wrapper" style="min-height: 243px;">
-			<div class="modal modal-danger  fade" id="modal-delete" tabindex="-1"
+			<div class="modal fade" id="delete" tabindex="-1"
 				role="dialog">
-				<div class="modal-dialog modal-sm" role="document">
+				<div class="modal-dialog modal-danger modal-sm" role="document">
 					<div class="modal-content">
 						<div class="modal-body">
 							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-								<h4 class="modal-title">删除</h4>
+								确定要删除？
 							</div>
 						</div>
-						<div class="modal-footer">
+						<div class="modal-body">
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">取消</button>
 							<button type="button" class="btn btn-danger btn-sure">删除</button>
@@ -36,8 +32,6 @@
 							<ul class="nav nav-tabs">
 								<li role="presentation" class="active"><a href="#list"
 									aria-controls="list" role="tab" data-toggle="tab">列表</a></li>
-								<li class=""><a href="#search" aria-controls="search"
-									role="tab" data-toggle="tab">搜索</a></li>
 							</ul>
 							<div class="tab-content">
 								<div role="tabpanel" class="tab-pane active" id="list">
@@ -83,28 +77,6 @@
 									</div>
 									<!-- /.table-responsive -->
 								</div>
-								<div role="tabpanel" class="tab-pane" id="search">
-									<div class="form-horizontal" style="margin-top: 30px">
-										<div class="form-group">
-											<label class="control-label col-md-2">用户名</label>
-											<div class="col-md-9">
-												<input type="text" class="form-control">
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="control-label col-md-2">标题</label>
-											<div class="col-md-9">
-												<input type="text" class="form-control">
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="col-md-9 col-md-offset-2 ">
-												<input type="submit" class="btn btn-info center-block"
-													value="搜索" disabled>
-											</div>
-										</div>
-									</div>
-								</div>
 							</div>
 						</div>
 						<div class="panel-footer">
@@ -129,17 +101,10 @@
 	<script type="text/javascript">
 	$(".btn-delete").on("click",function (e){
 		var url=$(this).attr("data-url");
-		var divItem=$(this).parent().parent();
-		$("#modal-delete").modal("show");
+		$("#delete").modal('show');
 		$(".btn-sure").on("click",function (e){
-			console("e");
-			$.getJSON(url,function (msg){
-				if(msg==true){
-					$("#modal-delete").modal('hide');
-					divItem.hide("slow");
-				}
-			});
-		});
+			location.href=url;
+		})
 	})
 	</script>
 </body>
