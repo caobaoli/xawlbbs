@@ -53,7 +53,6 @@
 						<li><a href="${back}/content/topics">话题</a></li>
 						<li><a href="${back}/content/sections">分类和节点</a></li>
 						<li><a href="${back}/content/comments">评论</a></li>
-						<li><a href="${back}/content/pages">页面</a></li>
 					</ul> <!-- /.nav-second-level --></li>
 
 				<li><a href="#"><i class="fa  fa-user"></i> 用户管理<span

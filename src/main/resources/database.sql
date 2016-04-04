@@ -66,43 +66,6 @@ CREATE TABLE IF NOT EXISTS `comment_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-
--- 导出  表 spring_winds.focus 结构
-CREATE TABLE IF NOT EXISTS `focus` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `create_at` datetime NOT NULL,
-  `node_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_dcysq5t6w4yvt0twe7a6umw1h` (`node_id`),
-  KEY `FK_shp43xvgrewctw5s4vo2993eq` (`user_id`),
-  CONSTRAINT `FK_dcysq5t6w4yvt0twe7a6umw1h` FOREIGN KEY (`node_id`) REFERENCES `node` (`id`),
-  CONSTRAINT `FK_shp43xvgrewctw5s4vo2993eq` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
--- 正在导出表  spring_winds.focus 的数据：~4 rows (大约)
-DELETE FROM `focus`;
-
-
-
--- 导出  表 spring_winds.follow 结构
-CREATE TABLE IF NOT EXISTS `follow` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `create_at` datetime NOT NULL,
-  `follower_id` int(11) NOT NULL,
-  `following_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_i2ewwo9inkvk8vaqrxj5v8f5i` (`follower_id`),
-  KEY `FK_tkjr0k3x569btja89gb5vccck` (`following_id`),
-  CONSTRAINT `FK_i2ewwo9inkvk8vaqrxj5v8f5i` FOREIGN KEY (`follower_id`) REFERENCES `user` (`id`),
-  CONSTRAINT `FK_tkjr0k3x569btja89gb5vccck` FOREIGN KEY (`following_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
-
--- 正在导出表  spring_winds.follow 的数据：~4 rows (大约)
-DELETE FROM `follow`;
-
-
-
 -- 导出  表 spring_winds.node 结构
 CREATE TABLE IF NOT EXISTS `node` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -142,32 +105,6 @@ CREATE TABLE IF NOT EXISTS `notification` (
 
 -- 正在导出表  spring_winds.notification 的数据：~33 rows (大约)
 DELETE FROM `notification`;
-
-
-
--- 导出  表 spring_winds.page 结构
-CREATE TABLE IF NOT EXISTS `page` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `content` longtext NOT NULL,
-  `create_at` datetime DEFAULT NULL,
-  `title` varchar(255) NOT NULL,
-  `update_at` datetime DEFAULT NULL,
-  `url` varchar(255) NOT NULL,
-  `view_count` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_f6ctahf1jnokrtpp5wblm0shb` (`url`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-
--- 正在导出表  spring_winds.page 的数据：~3 rows (大约)
-DELETE FROM `page`;
-/*!40000 ALTER TABLE `page` DISABLE KEYS */;
-INSERT INTO `page` (`id`, `content`, `create_at`, `title`, `update_at`, `url`, `view_count`) VALUES
-	(1, '# Spring abc 社区\r\n\r\n```\r\n呵呵哒\r\n\r\n```', '2015-12-03 03:02:04', 'about', NULL, 'about', 1),
-	(2, '# Comming soon !', '2015-12-08 21:08:05', 'Videos', NULL, 'videos', 1),
-	(3, '# 这是文档', '2015-12-15 21:37:58', '相关文档', NULL, 'docs', 1);
-/*!40000 ALTER TABLE `page` ENABLE KEYS */;
-
-
 
 -- 导出  表 spring_winds.section 结构
 CREATE TABLE IF NOT EXISTS `section` (
