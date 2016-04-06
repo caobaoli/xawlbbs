@@ -30,8 +30,8 @@ public class CommentServ {
 	
 	public static final String NOTIFICATION_TYPE_AT="@";
 	public static final String NOTIFICATION_TYPE_COMMENT="回复";
-	//匹配数字汉字字母下划线，3到9个字符，前后有空格
-	public static final Pattern NICK_PATTERN=Pattern.compile(" @([\u4e00-\u9fa5|A-Za-z0-9|_]{3,9}) ");
+	//匹配数字汉字字母下划线，3到9个字符，前后有空格... 将给定的正则表达式编译并赋予给Pattern类 
+	public static final Pattern NICK_PATTERN=Pattern.compile(" @([\u4e00-\u9fa5|A-Za-z0-9|_]{3,18}) ");
 	
 	@Autowired
 	private CommentRepo commentRepo;
@@ -96,10 +96,10 @@ public class CommentServ {
 		 * 匹配替换评论中提起的昵称
 		 */
 		String newContent=comment.getContent();
-		Matcher matcher=NICK_PATTERN.matcher(newContent);
+		Matcher matcher=NICK_PATTERN.matcher(newContent);//生成一个给定命名的Matcher对象
 		Set<User> atUsers=new HashSet<User>();
-		while(matcher.find()){
-			String nick=matcher.group(1);
+		while(matcher.find()){//尝试在目标字符串里查找下一个匹配子串
+			String nick=matcher.group(1);//返回当前查找而获得的与指定的组匹配的子串内容 
 			User atUser=userRepo.findOneByNick(nick);
 			if(atUser!=null){
 				atUsers.add(atUser);//确保只能at一次
@@ -110,7 +110,7 @@ public class CommentServ {
 			String userLink="<a href=\"{0}/users/{1}/topics\">{2}</a>";
 			String replacement=MessageFormat.format(
 					userLink, contextPath,atUser.getId(),atUser.getNick());
-			newContent=newContent.replaceAll(atUser.getNick(), replacement);//替换at
+			newContent=newContent.replaceAll(atUser.getNick(), replacement);//替换at(替换为带下划线的)
 			Notification atNotification=new Notification();//创建通知
 			atNotification.setComment(comment);//设置评论
 			atNotification.setType(NOTIFICATION_TYPE_AT);//设置为at类型

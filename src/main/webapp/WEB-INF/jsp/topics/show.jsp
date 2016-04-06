@@ -175,7 +175,7 @@
 		var nick=$(this).parent().children("input").first().val();
 		var atStr=" @"+nick+" ";//这个是回复的内容
 		var divConent=document.getElementById("comment-content");
-		inserStr(divConent,atStr);
+		inserStr(divConent,atStr);//在光标处插入字符串 obj文本框对象的id str要插入的值
 		return false;
 	});
 	$(".btn-delete").on("click",function (e){
