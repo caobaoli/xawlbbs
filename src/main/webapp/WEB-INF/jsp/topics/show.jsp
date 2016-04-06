@@ -110,9 +110,10 @@
 
 							</c:when>
 							<c:otherwise>
-								<form id="form-comment" action="${x}/topics/comment" method="post">
+								<form id="form-comment" action="${x}/comments/create" method="post">
 									<div class="form-group">
 										<input type="hidden" name="topicId" value="${topic.id}">
+										<input type="hidden" name="topicUserId" value="${topic.user.id}">
 										<textarea class="form-control" rows="7" name="content" id="comment-content">${comment.content}</textarea>
 									</div>
 									<button class="btn btn-info btn-comment" type="button">回复</button>

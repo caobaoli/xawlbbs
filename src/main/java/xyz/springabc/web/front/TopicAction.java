@@ -46,7 +46,7 @@ public class TopicAction {
 
 	@Autowired
 	private CommentServ commentServ;
-
+	
 	/**
 	 * 不能匹配话题，值作为显示话题公告使用
 	 * 
@@ -82,30 +82,6 @@ public class TopicAction {
 		return "/topics/show";
 	}
 
-	/**
-	 * 发表评论
-	 * @param topicId	话题id
-	 * @param comment	评论实体，还没有发表用户属性
-	 * @return
-	 */
-	@RequestMapping("/comment")
-	public String comment(@RequestParam(value = "topicId", required = true) int topicId,
-			@Validated Comment comment,
-			Errors result,
-			HttpServletRequest request,
-			RedirectAttributes attributes) {
-		User user = (User) request.getSession().getAttribute("user");
-		String contextPath=request.getContextPath();
-		if(result.hasErrors()){
-			attributes.addFlashAttribute("error",result.getAllErrors());
-			return "redirect:/topics/" + topicId;
-		}else{
-			comment.setUser(user);
-			commentServ.create(comment, topicId, contextPath);
-			attributes.addFlashAttribute("msg","评论已经发表");
-		}
-		return "redirect:/topics/" + topicId;
-	}
 
 	/**
 	 * 新建话题页面

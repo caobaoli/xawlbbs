@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import xyz.springabc.domin.Comment;
 import xyz.springabc.domin.User;
 import xyz.springabc.service.CommentServ;
+import xyz.springabc.service.UserService;
 
 @Controller
 @RequestMapping("/comments")
@@ -24,20 +25,25 @@ public class CommentAction {
 	@Autowired
 	private CommentServ commentServ;
 	
+	@Autowired
+	private UserService userServ;
+	
 	@RequestMapping("/create")
 	public String create(@RequestParam(value = "topicId", required = true) int topicId,
+			@RequestParam(value = "topicUserId", required = true) int topicUserId,
 			@Validated Comment comment,
 			Errors result,
 			HttpServletRequest request,
 			Model model){
-		User user = (User) request.getSession().getAttribute("user");
+		User notifyUser = userServ.getByUserId(topicUserId);
+		User user = (User)request.getSession().getAttribute("user");
 		String contextPath=request.getContextPath();
 		if(result.hasErrors()){
 			model.addAttribute("error",result.getAllErrors());
 			return "/comments/_msg";
 		}else{
 			comment.setUser(user);
-			commentServ.create(comment, topicId, contextPath);
+			commentServ.create(notifyUser,comment, topicId, contextPath);
 			model.addAttribute("comment",comment);
 			return "/comments/_show";
 		}

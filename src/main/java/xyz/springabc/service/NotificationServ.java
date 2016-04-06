@@ -30,7 +30,7 @@ public class NotificationServ {
 	 * @return Page封装的通知
 	 */
 	public Page<Notification> getByUser(User user,int status,int page){
-		int size=30;
+		int size=10;
 		PageRequest pageRequest=new PageRequest(--page, size);
 		return notificationRepo.findByUserAndStatus(user,status, pageRequest);
 	}

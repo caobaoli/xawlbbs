@@ -41,7 +41,6 @@ public class NotificationAction {
 		model.addAttribute("notifications",notificationPage.getContent());
 		model.addAttribute("page",notificationPage);
 		notificationServ.readAll(notificationPage.getContent());//阅读所有通知
-		model.addAttribute("user",user);
 		return "notifications/index";
 	}
 	
