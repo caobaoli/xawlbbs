@@ -25,9 +25,9 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12" style="margin-top: 30px">
+				<%@ include file="../common/msg.jsp"%>
 					<div class="panel panel-info">
 						<div class="panel-heading">用户</div>
-
 						<div class="panel-body">
 							<ul class="nav nav-tabs">
 								<li role="presentation" class="active"><a href="#list"

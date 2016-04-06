@@ -20,7 +20,7 @@ import xyz.springabc.service.UserService;
 
 @Controller
 @RequestMapping("/back/users")
-public class UserAndAdminC {
+public class UserAndAdminAction {
 
 	@Autowired
 	private UserService userServ;
@@ -85,7 +85,7 @@ public class UserAndAdminC {
 			RedirectAttributes attributes){
 		User user=userServ.getUserByNickOrEmailOrUsername(nick);
 		if(user==null){
-			attributes.addFlashAttribute("error","用户不存在");
+			attributes.addFlashAttribute("myerror","用户不存在");
 		}else{
 			userServ.changeRole(user, UserService.ROLE_ADMIIN);
 			attributes.addFlashAttribute("msg","用户已添加");
@@ -97,6 +97,7 @@ public class UserAndAdminC {
 	public String remove(@PathVariable("id") int id,RedirectAttributes attributes){
 		User user=userServ.getByUserId(id);
 		userServ.changeRole(user, UserService.ROLE_MENBER);
+		attributes.addFlashAttribute("msg","移除成功");
 		return "redirect:/back/users/admin";
 	}
 }

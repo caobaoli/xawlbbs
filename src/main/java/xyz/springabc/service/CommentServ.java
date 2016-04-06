@@ -149,7 +149,7 @@ public class CommentServ {
 	}
 	
 	public Page<Comment> getAll(int page){
-		PageRequest pageRequest=new PageRequest(--page, 30);
+		PageRequest pageRequest=new PageRequest(--page, 6);
 		return commentRepo.findAll(pageRequest);
 	}
 	

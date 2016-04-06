@@ -1,6 +1,5 @@
 package xyz.springabc.service;
 
-import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +42,7 @@ public class NodeServ {
 	 * @return
 	 */
 	public Page<Node> getNode(int page){
-		PageRequest pageRequest=new PageRequest(--page, 30);
+		PageRequest pageRequest=new PageRequest(--page, 7);
 		return nodeRepo.findAll(pageRequest);
 	}
 	
