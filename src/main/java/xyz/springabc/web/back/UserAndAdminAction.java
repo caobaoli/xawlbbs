@@ -68,8 +68,6 @@ public class UserAndAdminAction {
 			HttpServletRequest request,
 			Model model){
 		User oldUser=(User)request.getSession().getAttribute("user");
-		String avatar="";
-		user.setAvatar(avatar);
 		User newUser = userServ.update(oldUser,user,errors);
 		if(errors.hasErrors()){
 			model.addAttribute("error",errors.getAllErrors());

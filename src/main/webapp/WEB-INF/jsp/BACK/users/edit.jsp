@@ -26,45 +26,28 @@
 												<div class="help-block with-errors" style="display: none;">昵称被占用</div>
 											</div>
 										</div>
-
 										<div class="form-group">
-											<label class="control-label col-md-2">头像</label>
-											<div class="col-md-9">
-												<input style="padding: 6px" type="file" id="file"
-													name="file" /> <img alt="" id="file-preview"
-													style="max-height: 320px; width: auto" src="${user.avatar}">
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="control-label col-md-2">位置</label>
+											<label class="control-label col-md-2">所属年级</label>
 											<div class="col-md-9">
 												<input class="form-control" name="location"
 													value="${user.location}" />
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="control-label col-md-2">网站</label>
-											<div class="col-md-9">
-												<input class="form-control" name="homePage"
-													value="${user.homePage}" />
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="control-label col-md-2">代码库</label>
-											<div class="col-md-9">
-												<input class="form-control" name="github"
-													value="${user.github}" />
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="control-label col-md-2">社交网络</label>
+											<label class="control-label col-md-2">最爱社交</label>
 											<div class="col-md-9">
 												<input class="form-control" name="twitter"
 													value="${user.twitter}" />
 											</div>
 										</div>
+										<div class="form-group ">
+											<label class="control-label col-md-2">签名</label>
+											<div class="col-md-9">
+												<input class="form-control" name="signature" id="signature" value="${user.signature}">
+											</div>
+										</div>
 										<div class="form-group">
-											<label class="control-label col-md-2">个人资料</label>
+											<label class="control-label col-md-2">人生格言</label>
 											<div class="col-md-9">
 												<textarea rows="6" class="form-control" name="description">${user.description}</textarea>
 											</div>
@@ -109,23 +92,6 @@
 						$(this).parent().parent().removeClass("has-error");
 						$(this).parent().children(".with-errors").hide();
 	});
-	$("#file").on(
-			"change",
-			function(e) {
-				var fileControl = $(this);
-				var file = fileControl[0].files[0];//
-				var errorDiv = fileControl.parent()
-						.children(".with-errors").first();
-				errorDiv.html("");
-				fileControl.parent().removeClass("has-error");
-				if (file.size > 2000000) {
-					errorDiv.html("文件过大");
-					fileControl.parent().addClass("has-error");
-				} else {
-					createURL(file,"file-preview");
-				}
-
-			});
 	</script>
 </body>
 </html>

@@ -12,14 +12,13 @@
 					<div class="modal-content">
 						<div class="modal-body">
 							<div class="modal-header">
-								确定要删除？
-								(还没有禁言的)
+								确定要禁言？
 							</div>
 						</div>
 						<div class="modal-body">
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">取消</button>
-							<button type="button" class="btn btn-danger">删除</button>
+							<button type="button" class="btn btn-danger">禁言</button>
 						</div>
 					</div>
 				</div>

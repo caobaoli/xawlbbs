@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -112,10 +111,7 @@ public class UserService {
 		}
 			//引用复制更新属性
 		oldUser.setNick(newUser.getNick());
-		oldUser.setAvatar(newUser.getAvatar());
 		oldUser.setLocation(newUser.getLocation());
-		oldUser.setHomePage(newUser.getHomePage());
-		oldUser.setGithub(newUser.getGithub());
 		oldUser.setTwitter(newUser.getTwitter());
 		oldUser.setSignature(newUser.getSignature());
 		oldUser.setDescription(newUser.getDescription());
@@ -129,7 +125,6 @@ public class UserService {
 	 * @param id
 	 * @return
 	 */
-	@Cacheable(cacheNames="servCache",key="#id")
 	public User getByUserId(int id){
 		return userRepo.findOne(new Integer(id));
 	}
@@ -188,17 +183,17 @@ public class UserService {
 	}
 	
 	public Page<User> getByRole(String role ,int page){
-		Pageable pagerequest=new PageRequest(--page, 30);
+		Pageable pagerequest=new PageRequest(--page, 6);
 		return userRepo.findByRole(role, pagerequest);
 	}
 	
 	public Page<User> getAll(int page){
-		Pageable pagerequest=new PageRequest(--page, 30);
+		Pageable pagerequest=new PageRequest(--page, 6);
 		return userRepo.findAll(pagerequest);
 	}
 	
 	public Page<User> getByNickLike(String nick,int page){
-		Pageable pagerequest=new PageRequest(--page, 30);
+		Pageable pagerequest=new PageRequest(--page, 6);
 		return userRepo.findByNickLike(nick, pagerequest);
 	}
 }
