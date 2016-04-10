@@ -6,7 +6,7 @@
 	<div id="wrapper">
 		<%@ include file="../common/nav.jsp"%>
 		<div id="page-wrapper" style="min-height: 243px;">
-			<div class="modal  fade" id="delete" tabindex="-1"
+			<div class="modal  fade" id="modal-delete" tabindex="-1"
 				role="dialog">
 				<div class="modal-dialog modal-danger modal-sm" role="document">
 					<div class="modal-content">
@@ -18,7 +18,7 @@
 						<div class="modal-body">
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">取消</button>
-							<button type="button" class="btn btn-danger">禁言</button>
+							<button type="button" class="btn btn-danger btn-sure">禁言</button>
 						</div>
 					</div>
 				</div>
@@ -65,7 +65,7 @@
 													<td>${user.role}</td>
 													<td>
 														<a class="btn btn-info btn-xs" href="${x}/back/users/${user.id}/edit" target="_blank">编辑</a>
-														<button class="btn btn-danger btn-xs" data-toggle="modal"
+														<button class="btn btn-danger btn-xs btn-delete" data-url="${x}/back/users/admin/${user.id}/updateStatus" data-toggle="modal"
 															data-target="#delete">封禁</button>
 													</td>
 												</tr>
@@ -113,6 +113,14 @@
 	<script src="${x}/js/metisMenu.min.js"></script>
 
 	<script src="${x}/js/sb-admin-2.js"></script>
-
+	<script type="text/javascript">
+		$(".btn-delete").on("click",function (e){
+			var url=$(this).attr("data-url");
+			$("#modal-delete").modal('show');
+			$(".btn-sure").on("click",function (e){
+				location.href=url;
+			})
+		})
+	</script>
 </body>
 </html>

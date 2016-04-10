@@ -98,4 +98,12 @@ public class UserAndAdminAction {
 		attributes.addFlashAttribute("msg","移除成功");
 		return "redirect:/back/users/admin";
 	}
+	
+	@RequestMapping("/admin/{id}/updateStatus")
+	public String updateStatus(@PathVariable("id") int id,RedirectAttributes attributes) {
+		User user=userServ.getByUserId(id);
+		userServ.changeToke(user, "0");
+		attributes.addFlashAttribute("msg","禁言成功");
+		return "redirect:/back/users/admin";
+	}
 }

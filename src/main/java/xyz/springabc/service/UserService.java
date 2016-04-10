@@ -93,6 +93,14 @@ public class UserService {
 		user.setRole(role);
 		userRepo.save(user);
 	}
+	
+	/**
+	 * 更改用户发言状态
+	 */
+	public void changeToke(User user,String status){
+		user.setAvatar(status);
+		userRepo.save(user);
+	}
 	/**
 	 * 更新用户信息
 	 * @param user 包含部分更新属性的暂时用户

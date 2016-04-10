@@ -89,7 +89,12 @@ public class TopicAction {
 	 * @return
 	 */
 	@RequestMapping("/create")
-	public String newPage(Model model) {
+	public String newPage(Model model,HttpServletRequest requset,RedirectAttributes redirectAttrs) {
+		User user = (User) requset.getSession().getAttribute("user");
+		if(user != null && "0".equals(user.getAvatar())) {
+			redirectAttrs.addFlashAttribute("myerror","您已被禁言，请于管理员联系");
+			return "redirect:/";
+		}
 		model.addAttribute("sections", sectionServ.getAll());
 		return "/topics/create";
 	}
@@ -121,7 +126,12 @@ public class TopicAction {
 	 * @return
 	 */
 	@RequestMapping("/{id}/edit")
-	public String edit(@PathVariable int id,Model model) {
+	public String edit(@PathVariable int id,Model model,HttpServletRequest requset,RedirectAttributes redirectAttrs) {
+		User user = (User) requset.getSession().getAttribute("user");
+		if(user != null && "0".equals(user.getAvatar())) {
+			redirectAttrs.addFlashAttribute("myerror","您已被禁言，请于管理员联系");
+			return "redirect:/";
+		}
 		model.addAttribute("topic",topicServ.getOne(id));
 		model.addAttribute("sections", sectionServ.getAll());
 		return "/topics/edit";
