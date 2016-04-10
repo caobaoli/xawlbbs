@@ -8,12 +8,12 @@
 	<meta content="True" name="HandheldFriendly">
 	<link rel="shortcut icon" href="${x}/img/favicon.ico"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${x}/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${x}/css/bootstrap-flat.css">
-	<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
-	<link href="//cdn.bootcss.com/dropzone/4.2.0/min/dropzone.min.css" rel="stylesheet">
-	<script src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
-	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link href="${x}/css/font-awesome.css" rel="stylesheet">
+	<link href="${x}/css/dropzone.min.css" rel="stylesheet">
+	<script src="${x}/js/jquery.min.js"></script>
+	<script src="${x}/js/bootstrap.min.js"></script>
 	<script src="${x}/js/app.min.js"></script>
 	<script type="text/javascript">
 	function count(){
