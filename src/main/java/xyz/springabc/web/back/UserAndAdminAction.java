@@ -30,6 +30,13 @@ public class UserAndAdminAction {
 	public String admin(@RequestParam(value="p",defaultValue="1") int p,
 			Model model){
 		Page<User> userPage=userServ.getByRole(UserService.ROLE_ADMIIN,p);
+		for (User user : userPage) {
+			if("0".equals(user.getAvatar())) {
+				user.setAvatar("禁言中");
+			} else {
+				user.setAvatar("未禁言");
+			}
+		}
 		model.addAttribute("users",userPage.getContent());
 		model.addAttribute("page",userPage);
 		return "/BACK/users/admin";
@@ -39,6 +46,13 @@ public class UserAndAdminAction {
 	public String all(@RequestParam(value="p",defaultValue="1") int p,
 			Model model){
 		Page<User> userPage=userServ.getAll(p);
+		for (User user : userPage) {
+			if("0".equals(user.getAvatar())) {
+				user.setAvatar("禁言中");
+			} else {
+				user.setAvatar("未禁言");
+			}
+		}
 		model.addAttribute("users",userPage.getContent());
 		model.addAttribute("page",userPage);
 		return "/BACK/users/all";
@@ -47,6 +61,13 @@ public class UserAndAdminAction {
 	@RequestMapping("/search")
 	public String search(@RequestParam(value="p",defaultValue="1") int p, String someThing,Model model){
 		Page<User> userPage=userServ.getByNickLike(someThing,p);
+		for (User user : userPage) {
+			if("0".equals(user.getAvatar())) {
+				user.setAvatar("禁言中");
+			} else {
+				user.setAvatar("未禁言");
+			}
+		}
 		model.addAttribute("users",userPage.getContent());
 		model.addAttribute("page",userPage);
 		return "/BACK/users/all";
@@ -104,6 +125,14 @@ public class UserAndAdminAction {
 		User user=userServ.getByUserId(id);
 		userServ.changeToke(user, "0");
 		attributes.addFlashAttribute("msg","禁言成功");
-		return "redirect:/back/users/admin";
+		return "redirect:/back/users/all";
+	}
+	
+	@RequestMapping("/admin/{id}/updateStatusOk")
+	public String updateStatusOk(@PathVariable("id") int id,RedirectAttributes attributes) {
+		User user=userServ.getByUserId(id);
+		userServ.changeToke(user, "1");
+		attributes.addFlashAttribute("msg","解禁成功");
+		return "redirect:/back/users/all";
 	}
 }

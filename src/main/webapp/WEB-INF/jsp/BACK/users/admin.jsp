@@ -46,7 +46,7 @@
 													<th width="20%">邮箱</th>
 													<th width="15%">昵称</th>
 													<th width="15%">创建时间</th>
-													<th width="10%">编号</th>
+													<th width="10%">状态</th>
 													<th width="10">角色</th>
 													<th width="10%">处理</th>
 												</tr>
@@ -61,7 +61,7 @@
 													<td>
 														<fmt:formatDate value="${user.createAt}" type="both"/>
 													</td>
-													<td>${user.number}</td>
+													<td>${user.avatar}</td>
 													<td>${user.role}</td>
 													<td>
 														<a class="btn btn-danger btn-xs" href="${x}/back/users/admin/${user.id}/remove">移除</a>

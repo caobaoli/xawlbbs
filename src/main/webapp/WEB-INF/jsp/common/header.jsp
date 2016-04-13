@@ -10,8 +10,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link href="${x}/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${x}/css/bootstrap-flat.css">
-	<link href="${x}/css/font-awesome.css" rel="stylesheet">
-	<link href="${x}/css/dropzone.min.css" rel="stylesheet">
+	<link href="${x}/css/font-awesome.min.css" rel="stylesheet">
+	<link href="${x}/css/dropzone.css" rel="stylesheet">
 	<script src="${x}/js/jquery.min.js"></script>
 	<script src="${x}/js/bootstrap.min.js"></script>
 	<script src="${x}/js/app.min.js"></script>

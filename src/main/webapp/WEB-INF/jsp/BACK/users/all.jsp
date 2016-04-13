@@ -23,6 +23,23 @@
 					</div>
 				</div>
 			</div>
+			<div class="modal  fade" id="modal-ok" tabindex="-1"
+				role="dialog">
+				<div class="modal-dialog modal-danger modal-sm" role="document">
+					<div class="modal-content">
+						<div class="modal-body">
+							<div class="modal-header">
+								确定要解禁？
+							</div>
+						</div>
+						<div class="modal-body">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">取消</button>
+							<button type="button" class="btn btn-danger btn-sure">解禁</button>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-md-12" style="margin-top: 30px">
 					<div class="panel panel-info">
@@ -46,27 +63,27 @@
 													<th width="20%">邮箱</th>
 													<th width="15%">昵称</th>
 													<th width="15%">创建时间</th>
-													<th width="10%">编号</th>
-													<th width="10">角色</th>
-													<th width="10%">处理</th>
+													<th width="7%">状态</th>
+													<th width="8%">角色</th>
+													<th width="17%">处理</th>
 												</tr>
 											</thead>
 											<tbody>
 											<c:forEach items="${users}" var="user">
 												<tr>
 													<td>${user.id}</td>
-													<td>${user.username}</td>
+													<td style="font-size: inherit;color: #333;">${user.username}</td>
 													<td>${user.email}</td>
 													<td>${user.nick}</td>
 													<td>
 														<fmt:formatDate value="${user.createAt}" type="both"/>
 													</td>
-													<td>${user.number}</td>
+													<td style="font-size: 90%;color: #c7254e;background-color: #f9f2f4;">${user.avatar}</td>
 													<td>${user.role}</td>
 													<td>
 														<a class="btn btn-info btn-xs" href="${x}/back/users/${user.id}/edit" target="_blank">编辑</a>
-														<button class="btn btn-danger btn-xs btn-delete" data-url="${x}/back/users/admin/${user.id}/updateStatus" data-toggle="modal"
-															data-target="#delete">封禁</button>
+														<button class="btn btn-danger btn-xs btn-delete" data-url="${x}/back/users/admin/${user.id}/updateStatus" data-toggle="modal" <c:if test="${user.avatar eq '禁言中'}">disabled="disabled"</c:if> >封禁</button>
+														<button class="btn btn-warning btn-xs btn-ok" data-url="${x}/back/users/admin/${user.id}/updateStatusOk" data-toggle="modal" <c:if test="${user.avatar eq '未禁言'}">disabled="disabled"</c:if>>解禁</button>
 													</td>
 												</tr>
 											</c:forEach>
@@ -114,9 +131,18 @@
 
 	<script src="${x}/js/sb-admin-2.js"></script>
 	<script type="text/javascript">
+	    //禁言
 		$(".btn-delete").on("click",function (e){
 			var url=$(this).attr("data-url");
 			$("#modal-delete").modal('show');
+			$(".btn-sure").on("click",function (e){
+				location.href=url;
+			})
+		})
+		//解禁
+		$(".btn-ok").on("click",function (e){
+			var url=$(this).attr("data-url");
+			$("#modal-ok").modal('show');
 			$(".btn-sure").on("click",function (e){
 				location.href=url;
 			})

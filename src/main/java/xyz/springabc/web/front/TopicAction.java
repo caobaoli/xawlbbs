@@ -92,7 +92,7 @@ public class TopicAction {
 	public String newPage(Model model,HttpServletRequest requset,RedirectAttributes redirectAttrs) {
 		User user = (User) requset.getSession().getAttribute("user");
 		if(user != null && "0".equals(user.getAvatar())) {
-			redirectAttrs.addFlashAttribute("myerror","您已被禁言，请于管理员联系");
+			redirectAttrs.addFlashAttribute("myerror","您已被禁言，请与管理员联系");
 			return "redirect:/";
 		}
 		model.addAttribute("sections", sectionServ.getAll());
@@ -129,7 +129,7 @@ public class TopicAction {
 	public String edit(@PathVariable int id,Model model,HttpServletRequest requset,RedirectAttributes redirectAttrs) {
 		User user = (User) requset.getSession().getAttribute("user");
 		if(user != null && "0".equals(user.getAvatar())) {
-			redirectAttrs.addFlashAttribute("myerror","您已被禁言，请于管理员联系");
+			redirectAttrs.addFlashAttribute("myerror","您已被禁言，请与管理员联系");
 			return "redirect:/";
 		}
 		model.addAttribute("topic",topicServ.getOne(id));
