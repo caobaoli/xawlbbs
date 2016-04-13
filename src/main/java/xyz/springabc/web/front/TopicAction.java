@@ -105,11 +105,11 @@ public class TopicAction {
 	 * @return
 	 */
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(@Validated Topic topic,Errors resutlt, String topicNodeName, RedirectAttributes redirectAttrs,
+	public String save(@Validated Topic topic,Errors result, String topicNodeName, RedirectAttributes redirectAttrs,
 			HttpServletRequest requset) {
 		User user = (User) requset.getSession().getAttribute("user");
-		if(resutlt.hasErrors()){
-			redirectAttrs.addFlashAttribute("error", resutlt.getAllErrors());
+		if(result.hasErrors()){
+			redirectAttrs.addFlashAttribute("error", result.getAllErrors());
 			redirectAttrs.addFlashAttribute("topic",topic);
 			return "redirect:/topics/create";
 		}else{

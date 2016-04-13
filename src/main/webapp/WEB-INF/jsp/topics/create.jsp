@@ -59,7 +59,7 @@
 							</div>
 							<div class="form-group">
 								<label>标题</label> <input name="title" data-minlength="6" data-error="标题至少六个字" id="title"
-									class="form-control">
+									class="form-control" required="required">
 									<div class="help-block with-errors"></div>
 							</div>
 							<div class="form-group">
@@ -70,7 +70,7 @@
 										data-toggle="modal" data-target="#preview">预览</button>
 								</div>
 								<textarea rows="30" class="form-control" name="content"
-									id="content" data-minlength="6" data-error="正文不少于六个字"></textarea>
+									id="content" data-minlength="6" data-error="正文不少于六个字" required="required"></textarea>
 									<div class="help-block with-errors"></div>
 							</div>
 							<div class="btn-group">
