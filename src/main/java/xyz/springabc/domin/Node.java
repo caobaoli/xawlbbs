@@ -38,7 +38,6 @@ public class Node implements java.io.Serializable {
 	private String name;
 	private int status;
 	private Set<Topic> topics = new HashSet<Topic>(0);
-	private Set<Focus> focuses = new HashSet<Focus>(0);
 
 	public Node() {
 	}
@@ -49,15 +48,13 @@ public class Node implements java.io.Serializable {
 		this.status = status;
 	}
 
-	public Node(Section section, String avatar, String description, String name, int status, Set<Topic> topics,
-			Set<Focus> focuses) {
+	public Node(Section section, String avatar, String description, String name, int status, Set<Topic> topics) {
 		this.section = section;
 		this.avatar = avatar;
 		this.description = description;
 		this.name = name;
 		this.status = status;
 		this.topics = topics;
-		this.focuses = focuses;
 	}
 
 	@Id
@@ -134,15 +131,6 @@ public class Node implements java.io.Serializable {
 
 	public void setTopics(Set<Topic> topics) {
 		this.topics = topics;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "node")
-	public Set<Focus> getFocuses() {
-		return this.focuses;
-	}
-
-	public void setFocuses(Set<Focus> focuses) {
-		this.focuses = focuses;
 	}
 
 }

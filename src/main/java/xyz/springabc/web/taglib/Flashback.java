@@ -1,7 +1,6 @@
 package xyz.springabc.web.taglib;
 
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.jsp.JspException;
@@ -13,7 +12,6 @@ import javax.servlet.jsp.tagext.TagSupport;
  * 1分钟前
  * 1小时前
  * 1天前
- * @author zonghua
  *
  */
 public class Flashback extends TagSupport {

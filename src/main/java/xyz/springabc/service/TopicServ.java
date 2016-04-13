@@ -177,13 +177,6 @@ public class TopicServ {
 		return topicPage;
 	}
 	
-	public Page<Topic> getByFocusedOrderByDefault(int userId,int page){
-		PageRequest pageRequest = new PageRequest(--page, 6);
-		Page<Topic> topicPage = topicRepo.findByFocusedOrderByDefault(userId, pageRequest);
-		this.setLastCommentUser(topicPage);
-		return topicPage;
-	}
-
 	/**
 	 * 直接保存话题
 	 * 

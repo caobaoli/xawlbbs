@@ -84,7 +84,6 @@ public class User implements java.io.Serializable {
 	private Set<Notification> notifications = new HashSet<Notification>(0);
 	private Set<Topic> topics = new HashSet<Topic>(0);
 	private Set<Comment> comments = new HashSet<Comment>(0);
-	private Set<Focus> focuses = new HashSet<Focus>(0);
 	private Set<Collection> collections = new HashSet<Collection>(0);
 	private Set<Comment> likeComments= new HashSet<Comment>();
 	public User() {
@@ -101,7 +100,7 @@ public class User implements java.io.Serializable {
 			String github, String homePage, String location, String nick, long number, String password, long points,
 			String role, String signature, Long topicCount, String twitter, Date updateAt, String username,
 		    Set<Notification> notifications, Set<Topic> topics, Set<Comment> comments,
-			Set<Focus> focuses, Set<Collection> collections,Set<Comment> likeComments) {
+			Set<Collection> collections,Set<Comment> likeComments) {
 		this.avatar = avatar;
 		this.commentCount = commentCount;
 		this.company = company;
@@ -124,7 +123,6 @@ public class User implements java.io.Serializable {
 		this.notifications = notifications;
 		this.topics = topics;
 		this.comments = comments;
-		this.focuses = focuses;
 		this.likeComments = likeComments;
 		this.collections = collections;
 	}
@@ -340,15 +338,6 @@ public class User implements java.io.Serializable {
 
 	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	public Set<Focus> getFocuses() {
-		return this.focuses;
-	}
-
-	public void setFocuses(Set<Focus> focuses) {
-		this.focuses = focuses;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")

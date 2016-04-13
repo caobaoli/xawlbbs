@@ -197,9 +197,4 @@ public interface TopicRepo extends JpaRepository<Topic, Integer>{
 			+"ORDER BY t.lastCommentAt DESC,t.createAt DESC")
 	Page<Topic> findByTitleLikeAndStatus(String title,int status,Pageable pageRequest);
 	
-	@Query("SELECT t FROM User u LEFT JOIN u.focuses f "
-			+"LEFT JOIN f.node n LEFT JOIN n.topics t "+
-			" WHERE u.id=?1 "
-			+"ORDER BY t.lastCommentAt DESC,t.createAt DESC")
-	Page<Topic> findByFocusedOrderByDefault(int userId,Pageable pageRequest);
 }

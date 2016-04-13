@@ -67,8 +67,6 @@ public class HomeAction {
 		Page<Topic> topicPage;
 		if(section.equals("hot")){
 			topicPage=topicServ.getAllOrderByHot(p);
-		}else if(section.equals("focused")){
-			topicPage=topicServ.getByFocusedOrderByDefault(userId, p);
 		}else{
 			topicPage=topicServ.getBySectionDefault(section, p);
 		}

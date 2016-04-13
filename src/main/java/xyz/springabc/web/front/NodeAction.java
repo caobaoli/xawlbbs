@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import xyz.springabc.domin.Node;
 import xyz.springabc.domin.Topic;
 import xyz.springabc.domin.User;
-import xyz.springabc.service.FocusServ;
 import xyz.springabc.service.NodeServ;
 import xyz.springabc.service.TopicServ;
 
@@ -29,9 +28,6 @@ public class NodeAction {
 	
 	@Autowired
 	private TopicServ topicServ;
-	
-	@Autowired
-	private FocusServ focuServ;
 	
 	/**
 	 * page不能作为分页参数
@@ -60,9 +56,6 @@ public class NodeAction {
 		Page<Topic> topicPage=topicServ.getByNodeOrderByDefault(node, p);
 		List<Topic> topics=topicPage.getContent();
 		model.addAttribute("topics",topics);
-		if(user!=null){
-			model.addAttribute("isFocus",focuServ.isFocus(id, user.getId()));
-		}
 		model.addAttribute("page",topicPage);
 		model.addAttribute("node",node);
 		return "/nodes/list";
