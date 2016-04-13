@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import xyz.springabc.domin.Topic;
-import xyz.springabc.domin.User;
 import xyz.springabc.repository.SectionRepo;
 import xyz.springabc.service.NodeServ;
 import xyz.springabc.service.TopicServ;
@@ -60,10 +59,6 @@ public class HomeAction {
 			@PathVariable(value="section") String section,
 			HttpServletRequest request,
 			Model model) {
-		int userId=0;//默认没有
-		if(request.getSession().getAttribute("user")!=null){
-			userId=((User)request.getSession().getAttribute("user")).getId();
-		}
 		Page<Topic> topicPage;
 		if(section.equals("hot")){
 			topicPage=topicServ.getAllOrderByHot(p);

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import xyz.springabc.domin.Node;
 import xyz.springabc.domin.Topic;
-import xyz.springabc.domin.User;
 import xyz.springabc.service.NodeServ;
 import xyz.springabc.service.TopicServ;
 
@@ -51,7 +50,6 @@ public class NodeAction {
 			@RequestParam(defaultValue="1",value="p") int p,
 			HttpServletRequest request,
 			Model model){
-		User user=(User)request.getSession().getAttribute("user");
 		Node node=nodeServ.getOneNode(id);
 		Page<Topic> topicPage=topicServ.getByNodeOrderByDefault(node, p);
 		List<Topic> topics=topicPage.getContent();
