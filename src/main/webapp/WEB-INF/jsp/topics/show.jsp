@@ -62,7 +62,7 @@
 				</div>
 				<div class="panel panel-info">
 					<div class="panel-heading">共${topic.commentCount} 条回复</div>
-
+					<%@ include file="/WEB-INF/jsp/common/msg.jsp"%>
 					<ul id="comments" class="list-group-panel-body list-group">
 						<c:forEach items="${comments}" var="comment">
 							<li id="floor${comment.floor}" class="list-group-item <c:if test="${comment.isLike}">list-group-item-info</c:if>">

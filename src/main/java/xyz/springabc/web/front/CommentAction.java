@@ -37,7 +37,7 @@ public class CommentAction {
 			Model model,RedirectAttributes redirectAttrs){
 		User user = (User) request.getSession().getAttribute("user");
 		if(user != null && "0".equals(user.getAvatar())) {
-			redirectAttrs.addFlashAttribute("error","您已被禁言，请与管理员联系");
+			model.addAttribute("myerror","您已被禁言，请与管理员联系");
 			return "/comments/_msg";
 		}
 		User notifyUser = userServ.getByUserId(topicUserId);
@@ -54,11 +54,11 @@ public class CommentAction {
 	}
 	
 	@RequestMapping("/{id}/edit")
-	public String edit(@PathVariable("id") int id,Model model,HttpServletRequest request,RedirectAttributes redirectAttrs){
+	public String edit(@PathVariable("id") int id,Model model,HttpServletRequest request, RedirectAttributes redirectAttrs){
 		User user = (User) request.getSession().getAttribute("user");
 		if(user != null && "0".equals(user.getAvatar())) {
 			redirectAttrs.addFlashAttribute("myerror","您已被禁言，请与管理员联系");
-			return "/comments/_show";
+			return "redirect:/";
 		}
 		model.addAttribute("comment",commentServ.getOne(id));
 		return "/comments/edit";
