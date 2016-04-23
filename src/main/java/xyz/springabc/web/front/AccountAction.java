@@ -1,5 +1,9 @@
 package xyz.springabc.web.front;
 
+import java.io.IOException;
+import java.util.Random;
+
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -137,6 +141,88 @@ public class AccountAction {
 			attributes.addFlashAttribute("msg","您已经登录");
 			return "redirect:/";
 		}
+	}
+	
+	/**
+	 * 发送找回密码邮件的页面
+	 * @return
+	 */
+	@RequestMapping(value="/forget",method=RequestMethod.GET)
+	public String forgetPage(){
+		return "/account/forget";
+	}
+	
+	
+	/**
+	 * 发送邮件
+	 * 产生的唯一校验码放在session
+	 * @param email
+	 * @param request
+	 * @return
+	 * @throws IOException
+	 * @throws MessagingException
+	 */
+	@RequestMapping("/sendEmail")
+	@ResponseBody
+	public boolean sendEmail(@RequestParam("email") String email,
+			HttpServletRequest request) throws IOException, MessagingException{
+		User user=userServ.getUserByNickOrEmailOrUsername(email);
+		if(user==null){
+			return false;
+		}else{
+			Random random=new Random();
+			String code=random.nextInt(99999)+"";
+			request.getSession().setAttribute("code", code);
+			return true;
+//			return userServ.sendValidateEmail(email, code);
+		}
+	}
+	
+	/**
+	 * 检测校验码
+	 * @param code
+	 * @return
+	 */
+	@RequestMapping("/checkCode")
+	public boolean checkCode(@RequestParam("code") String code){
+		return true;
+	}
+	
+	/**
+	 * 通过校验码重置密码
+	 * @param username
+	 * @param attributes
+	 * @return
+	 */
+	@RequestMapping(value="/forget",method=RequestMethod.POST)
+	public String forgetAction(@Validated UserResetForm userResetForm,
+			Errors errors,
+			HttpServletRequest request,
+			RedirectAttributes attributes){
+		User user=userServ.getUserByNickOrEmailOrUsername(userResetForm.getEmail());
+		if(user==null){
+			attributes.addFlashAttribute("myerror", "邮箱不存在！");
+			return "redirect:/account/forget";
+		}
+//		String userCode = userResetForm.getCode();
+		String code =(String) request.getSession().getAttribute("code");
+//		if(code == null) {
+//			attributes.addFlashAttribute("myerror", "确认你已经收到邮件了吗？");
+//			return "redirect:/account/forget";
+//		} else if(!code.equals(userCode)) {
+//			attributes.addFlashAttribute("myerror", "亲，你的验证码输入错误！请查证再试，谢谢！");
+//			return "redirect:/account/forget";
+//		}
+		userResetForm.setCode(code);
+		userResetForm.setPassword(user.getPassword());
+		userResetForm.setPassword2(userResetForm.getPassword1());
+		userServ.updatePassword(userResetForm, user, errors);
+		if(errors.hasErrors()){
+			attributes.addFlashAttribute("error",errors.getAllErrors());
+			return "redirect:/account/forget";
+		}
+		attributes.addFlashAttribute("msg","密码已重置");
+		return "redirect:/account/signin";
 	}
 	
 	/**

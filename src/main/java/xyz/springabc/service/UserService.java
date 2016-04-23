@@ -1,11 +1,18 @@
 package xyz.springabc.service;
 
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Date;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +24,7 @@ import xyz.springabc.error.ValidateError;
 import xyz.springabc.repository.UserRepo;
 import xyz.springabc.service.support.EncryptUtil;
 import xyz.springabc.web.form.UserResetForm;
+import xyz.springabc.web.helper.MyMailSender;
 import xyz.springabc.web.helper.Validator;
 
 @Service
@@ -30,6 +38,9 @@ public class UserService {
 	
 	@Autowired
 	private UserRepo userRepo;
+	
+	@Autowired
+	private MyMailSender myMailSender;
 	
 	public User getUserByUserName(String username){
 		//TODO
@@ -188,6 +199,33 @@ public class UserService {
 		}else {
 			return null;
 		}
+	}
+	
+	/**
+	 * 发送校验邮件
+	 * @param email
+	 * @param code
+	 * @return
+	 */
+	public boolean sendValidateEmail(String email,String code){
+		String content="";
+		try {
+			Resource resource=new ClassPathResource("mailTemplet/code.html");//读取校验码模板
+			File file=resource.getFile();
+			InputStream urlStream = new FileInputStream(file);
+			BufferedReader bufferedReader = new BufferedReader(
+					new InputStreamReader(urlStream, "UTF-8"));
+			//编码只能这样写,不能是utf8;<meta charset="utf8">必须要
+			String temp = ""; //每一行的缓存
+			while ((temp = bufferedReader.readLine()) != null) {
+				content += temp;
+			}
+			bufferedReader.close();
+			content=String.format(content, code);
+		} catch (Exception e) {
+			return false;
+		}
+		return myMailSender.send(email, "找回密码，请查看身份校验验证码", content);//邮件接收者，标题，内容
 	}
 	
 	public Page<User> getByRole(String role ,int page){

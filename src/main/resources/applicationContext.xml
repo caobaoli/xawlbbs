@@ -110,4 +110,19 @@
 		proxy-target-class="true" />
 	<aop:aspectj-autoproxy />
 
+	<!-- 邮件发送器 -->
+	<bean id="myMailSender" class="xyz.springabc.web.helper.MyMailSender">
+		<constructor-arg index="0">
+			<value>${email.host}</value>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>${email.port}</value>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<value>${email.username}</value>
+		</constructor-arg>
+		<constructor-arg index="3">
+			<value>${email.password}</value>
+		</constructor-arg>
+	</bean>
 </beans>

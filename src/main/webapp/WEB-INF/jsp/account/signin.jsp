@@ -35,6 +35,9 @@
 						</div>
 						</form>
 					</div>
+					<div class="panel-footer">
+						忘记密码？<a href="${x}/account/forget"><span>找回</span></a>	
+					</div>
 				</div>
 			</div>
 		</div>
