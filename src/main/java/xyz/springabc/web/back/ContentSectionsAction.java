@@ -77,7 +77,7 @@ public class ContentSectionsAction {
 			String newSectionName,
 			RedirectAttributes attributes){
 		Section section=sectionServ.getOne(newSectionName);
-		if(section==null||newSectionName!=""){
+		if(section==null&&(newSectionName!=null && !"".equals(newSectionName))){
 			section=new Section();
 			section.setName(newSectionName);
 			sectionServ.save(section);
