@@ -7,8 +7,15 @@
 		</div>
 		<span>
 			<ul class="nav navbar-nav">
+				<c:if test="${not empty sessionScope.user}">
+			    	<li class=""><a href="${x}/users/${sessionScope.user.id}/topics">我的主页</a></li>
+				</c:if>
 				<li class=""><a href="${x}/">话题</a></li>
 				<li class=""><a href="${x}/nodes">节点</a></li>
+				<c:if test="${not empty sessionScope.user}">
+					<li class=""><a href="${x}/account/setting">个人设置</a></li>
+					<li class=""><a href="${x}/users/${sessionScope.user.id}/collections">收藏话题</a></li>
+				</c:if>
 			</ul> <c:choose>
 				<c:when test="${empty sessionScope.user}">
 					<ul class="nav navbar-nav navbar-right">
