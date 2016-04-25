@@ -15,6 +15,7 @@
 				<c:if test="${not empty sessionScope.user}">
 					<li class=""><a href="${x}/account/setting">个人设置</a></li>
 					<li class=""><a href="${x}/users/${sessionScope.user.id}/collections">收藏话题</a></li>
+					<li class=""><a href="${x}/notifications">消息推送</a></li>
 				</c:if>
 			</ul> <c:choose>
 				<c:when test="${empty sessionScope.user}">
