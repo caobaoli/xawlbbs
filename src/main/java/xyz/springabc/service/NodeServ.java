@@ -42,7 +42,7 @@ public class NodeServ {
 	 * @return
 	 */
 	public Page<Node> getNode(int page){
-		PageRequest pageRequest=new PageRequest(--page, 7);
+		PageRequest pageRequest=new PageRequest(--page, 6);
 		return nodeRepo.findAll(pageRequest);
 	}
 	

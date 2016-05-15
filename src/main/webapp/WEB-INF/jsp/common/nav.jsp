@@ -3,7 +3,7 @@
 <nav class="navbar  navbar-static-top navbar-default">
 	<div class="container">
 		<div class="navbar-header">
-			<a href="${x}/" class="navbar-brand">文理论坛</a>
+			<a href="${x}/" class="navbar-brand">西安文理论坛</a>
 		</div>
 		<span>
 			<ul class="nav navbar-nav">

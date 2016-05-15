@@ -41,7 +41,7 @@
 												<tr>
 												<th width="5%">#</th>
 													<th width="15%">名字</th>
-													<th width="50%">描述</th>
+													<th width="57%">描述</th>
 													<th width="10%">话题数</th>
 													<th width="10%">处理</th>
 												</tr>
@@ -74,6 +74,9 @@
 									</div>
 									<!-- /.table-responsive -->
 							</div>
+						</div>
+						<div class="panel-footer">
+						<%@ include file="/WEB-INF/jsp/common/pagination.jsp" %>
 						</div>
 					</div>
 				</div>

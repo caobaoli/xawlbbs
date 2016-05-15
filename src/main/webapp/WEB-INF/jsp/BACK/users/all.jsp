@@ -81,7 +81,6 @@
 													<td style="font-size: 90%;color: #c7254e;background-color: #f9f2f4;">${user.avatar}</td>
 													<td>${user.role}</td>
 													<td>
-														<a class="btn btn-info btn-xs" href="${x}/back/users/${user.id}/edit" target="_blank">编辑</a>
 														<button class="btn btn-danger btn-xs btn-delete" data-url="${x}/back/users/admin/${user.id}/updateStatus" data-toggle="modal" <c:if test="${user.avatar eq '禁言中'}">disabled="disabled"</c:if> >封禁</button>
 														<button class="btn btn-warning btn-xs btn-ok" data-url="${x}/back/users/admin/${user.id}/updateStatusOk" data-toggle="modal" <c:if test="${user.avatar eq '未禁言'}">disabled="disabled"</c:if>>解禁</button>
 													</td>
@@ -96,7 +95,7 @@
 								<form action="${x}/back/users/search">
 									<div class="form-horizontal" style="margin-top: 30px">
 										<div class="form-group">
-											<label class="control-label col-md-2">用户名/昵称/邮箱</label>
+											<label class="control-label col-md-2">用户名/昵称</label>
 											<div class="col-md-8">
 												<input type="text" name="someThing" class="form-control">
 											</div>

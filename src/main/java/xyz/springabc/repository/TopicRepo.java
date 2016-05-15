@@ -42,7 +42,10 @@ public interface TopicRepo extends JpaRepository<Topic, Integer>{
 	 * @param pagerequest
 	 * @return
 	 */
-	Page<Topic> findByUserOrderByCreateAtDesc(User user,Pageable pagerequest);
+	@Query("SELECT t FROM Topic t "
+			+"WHERE t.user=?1 and t.status=?2 "
+			+"ORDER BY t.commentCount DESC")
+	Page<Topic> findByUserOrderByCreateAtDesc(User user, int status, Pageable pagerequest);
 	
 	/**
 	 * 按照节点和状态查找，按照最高分数
@@ -193,7 +196,7 @@ public interface TopicRepo extends JpaRepository<Topic, Integer>{
 	 * @return
 	 */
 	@Query("SELECT t FROM Topic t LEFT JOIN t.user u "
-			+"WHERE t.title LIKE ?1 AND t.status=?2 "
+			+"WHERE t.title LIKE %?1% AND t.status=?2 "
 			+"ORDER BY t.lastCommentAt DESC,t.createAt DESC")
 	Page<Topic> findByTitleLikeAndStatus(String title,int status,Pageable pageRequest);
 	

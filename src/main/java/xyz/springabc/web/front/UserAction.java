@@ -51,7 +51,7 @@ public class UserAction {
 			response.setStatus(404);
 		}else{
 			model.addAttribute("user",user);
-			model.addAttribute("page",collectionServ.getByUserId(user, p, 12));
+			model.addAttribute("page",collectionServ.getByUserId(user, p, 6));
 		}
 		return "/users/collections";
 	}
@@ -72,7 +72,7 @@ public class UserAction {
 			response.setStatus(404);
 		}else{
 			model.addAttribute("user", user);
-			model.addAttribute("page",topicServ.getByUser(user, p, 12));
+			model.addAttribute("page",topicServ.getByUser(user, p, 6));
 		}
 		return "users/topics";
 	}
@@ -93,7 +93,7 @@ public class UserAction {
 			response.setStatus(404);
 		}else{
 			model.addAttribute("user",user);
-			model.addAttribute("page",commentServ.getByUser(user, p, 30));
+			model.addAttribute("page",commentServ.getByUser(user, p, 6));
 		}
 		return "users/comments";
 	}

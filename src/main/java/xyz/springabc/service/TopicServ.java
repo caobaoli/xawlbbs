@@ -221,11 +221,7 @@ public class TopicServ {
 		topicRepo.delete(id);
 	}
 
-	/**
-	 * 软删除 改变状态
-	 * 
-	 * @param id
-	 */
+	
 	@Transactional
 	public void softDelete(int id) {
 		Topic topic = getOne(id);
@@ -258,7 +254,7 @@ public class TopicServ {
 	 */
 	public Page<Topic> getByUser(User user, int page, int size) {
 		PageRequest pageRequest = new PageRequest(--page, size);
-		return topicRepo.findByUserOrderByCreateAtDesc(user, pageRequest);
+		return topicRepo.findByUserOrderByCreateAtDesc(user, 0, pageRequest);
 	}
 
 	@Transactional
@@ -279,7 +275,7 @@ public class TopicServ {
 			return topicRepo.findByTitleLikeAndStatus(title, 0, pageRequest);
 		} else {
 			User user = userRepo.findOneByNick(nick);
-			return topicRepo.findByUserOrderByCreateAtDesc(user, pageRequest);
+			return topicRepo.findByUserOrderByCreateAtDesc(user, 0, pageRequest);
 		}
 	}
 }
